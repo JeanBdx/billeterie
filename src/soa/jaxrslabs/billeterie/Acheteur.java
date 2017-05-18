@@ -11,7 +11,7 @@ public class Acheteur extends Personne{
 	private String mail;
 	
 	/**
-	 * 
+	 * dc
 	 * @param civilite
 	 * @param nom
 	 * @param prenom
