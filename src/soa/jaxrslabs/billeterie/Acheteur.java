@@ -25,6 +25,11 @@ public class Acheteur extends Personne{
 		this.tel = tel;
 		this.mail = mail;
 	}
+	public Acheteur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "Acheteur [adresse=" + adresse + ", tel=" + tel + ", mail=" + mail + "]";

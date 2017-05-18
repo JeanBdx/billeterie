@@ -14,7 +14,6 @@ public class InformationEvent {
 		private String sport;
 		private String artiste;
 		private String detailEvent;
-		private String lieux;
 		private Date dateEvent;
 		
 		
@@ -23,7 +22,7 @@ public class InformationEvent {
 			// TODO Auto-generated constructor stub
 		}
 		public InformationEvent(String reference, String nomEvent, String typeEvent, String sport, String artiste,
-			String detailEvent, String lieux, Date dateEvent) {
+			String detailEvent, Date dateEvent) {
 		super();
 		this.reference = reference;
 		this.nomEvent = nomEvent;
@@ -31,14 +30,12 @@ public class InformationEvent {
 		this.sport = sport;
 		this.artiste = artiste;
 		this.detailEvent = detailEvent;
-		this.lieux = lieux;
 		this.dateEvent = dateEvent;
 	}
 		@Override
 		public String toString() {
 			return "informationEvent [reference=" + reference + ", nomEvent=" + nomEvent + ", typeEvent=" + typeEvent
-					+ ", sport=" + sport + ", artiste=" + artiste + ", detailEvent=" + detailEvent + ", lieux=" + lieux
-					+ ", dateEvent=" + dateEvent + "]";
+					+ ", sport=" + sport + ", artiste=" + artiste + ", detailEvent=" + detailEvent + ", dateEvent=" + dateEvent + "]";
 		}
 		public String getReference() {
 			return reference;
@@ -75,12 +72,6 @@ public class InformationEvent {
 		}
 		public void setDetailEvent(String detailEvent) {
 			this.detailEvent = detailEvent;
-		}
-		public String getLieux() {
-			return lieux;
-		}
-		public void setLieux(String lieux) {
-			this.lieux = lieux;
 		}
 		public Date getDateEvent() {
 			return dateEvent;
