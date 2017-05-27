@@ -1,8 +1,10 @@
 package soa.jaxrslabs.servlets;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,15 +31,32 @@ public class CreationLieu extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	// TODO Auto-generated method stub
-    	PrintWriter out = resp.getWriter();
-		out.println("bon");
+    	
     }
     
 	@Override 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		out.println("bon");
+		String localisation = request.getParameter("localisation");
+		String nbCategories = request.getParameter("nbCategorie");
+		ArrayList<Categorie> categories = new ArrayList<>();
+		for(int i=1;i<=Integer.valueOf(nbCategories);i++){
+			String nomCategorie = request.getParameter("label_categorie_"+i);
+			int nbZone = Integer.valueOf(request.getParameter("nrb_zones_"+i));
+			int nbRang = Integer.valueOf(request.getParameter("nrb_rangs_"+i));
+			int nbPlace = Integer.valueOf(request.getParameter("nrb_places_"+i));
+			ArrayList<Integer> prix = new ArrayList<>();
+			for(int j=1;j<=nbZone;j++){
+				prix.add(Integer.valueOf(request.getParameter("prix_place_"+j)));
+			}
+			categories.add(GestionEvent.createCategorie(nomCategorie, nbZone, nbRang, nbPlace, prix.stream().mapToInt(Integer::intValue).toArray()));
+		}
+	;
+	Properties prop = new Properties();
+	InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/classes/chemin.properties");
+	prop.load(input);
+	String chemin = prop.getProperty("mon_path_xml");
+	GestionEvent.createLieu(chemin,localisation, categories);
+	response.sendRedirect("/biletteriev2/AdminChoix.html");
 	}
 
 }

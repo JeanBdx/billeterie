@@ -2,11 +2,14 @@ package soa.jaxrslabs.metier;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Properties;
 
 import javax.jws.WebService;
 import javax.xml.bind.JAXBContext;
@@ -14,13 +17,16 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+
+
 import soa.jaxrslabs.billeterie.*;
 
 @WebService
 public class GestionEvent {
 	
-	public static Place getPlace(String idEvent, String nomCategorie, String nomZone, String idPlace){
-		File source = new File("./WebContent/XML/event/");
+	public static Place getPlace(String chemin,String idEvent, String nomCategorie, String nomZone, String idPlace) throws IOException{
+
+		File source = new File(chemin+"/event/");
 		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
 		File[] content = source.listFiles();
 		for (int i = 0; i < content.length; i++) {
@@ -70,9 +76,9 @@ public class GestionEvent {
 		return null;
 	}
 
-	public static Lieux getLieu(String idLieux) {
-		// cr�er un fichier qui pointe sur tes images
-		File source = new File("./WebContent/XML/lieux/");
+	public static Lieux getLieu(String chemin,String idLieux) throws IOException {
+	
+		File source = new File(chemin+"/lieux/");
 		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
 		File[] content = source.listFiles();
 		for (int i = 0; i < content.length; i++) {
@@ -105,8 +111,9 @@ public class GestionEvent {
 		return null;
 	}
 	
-	public static ArrayList<Lieux> getLieux() {
-		File source = new File("./WebContent/XML/lieux/");
+	public static ArrayList<Lieux> getLieux(String chemin) throws IOException {
+		
+		File source = new File(chemin+"/lieux/");
 		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
 		File[] content = source.listFiles();
 		ArrayList<Lieux> listeLieux = new ArrayList<>();
@@ -137,9 +144,9 @@ public class GestionEvent {
 		return null;
 	}
 
-	public static Evenement getEvenement(String idEvent) {
-		// cr�er un fichier qui pointe sur tes images
-		File source = new File("./WebContent/XML/event/");
+	public static Evenement getEvenement(String chemin,String idEvent) throws IOException {
+
+		File source = new File(chemin+"/event/");
 		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
 		File[] content = source.listFiles();
 		for (int i = 0; i < content.length; i++) {
@@ -172,8 +179,9 @@ public class GestionEvent {
 		return null;
 	}
 	
-	public ArrayList<Evenement> getEvenements() {
-		File source = new File("./WebContent/XML/event/");
+	public ArrayList<Evenement> getEvenements(String chemin) throws IOException {
+	
+		File source = new File(chemin+"/event/");
 		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
 		File[] content = source.listFiles();
 		ArrayList<Evenement> listeEvent = new ArrayList<>();
@@ -204,9 +212,9 @@ public class GestionEvent {
 		return null;
 	}
 
-	public void reserverPlace(String idEvent, String nomCategorie, String nomZone, String escalier, int numero,
-			int rang) {
-		Evenement current = getEvenement(idEvent);
+	public void reserverPlace(String chemin,String idEvent, String nomCategorie, String nomZone, String escalier, int numero,
+			int rang) throws IOException {
+			Evenement current = getEvenement(chemin,idEvent);
 		if (current != null) {
 			Iterator<Categorie> cat = current.getLieux().getCategories().iterator();
 			while (cat.hasNext()) {
@@ -236,7 +244,7 @@ public class GestionEvent {
 				}
 			}
 			try {
-				sauvegardeXML("./WebContent/XML/event/event-"+current.getUniqueID()+".xml", current);
+				sauvegardeXML(chemin+"event/event-"+current.getUniqueID()+".xml", current);
 			} catch (FileNotFoundException | JAXBException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -271,10 +279,11 @@ public class GestionEvent {
 		
 	}
 	
-	public static void createLieu(String localisation, ArrayList<Categorie> categories){
+	public static void createLieu(String chemin,String localisation, ArrayList<Categorie> categories) throws IOException{
 		Lieux l = new Lieux(localisation,categories);
+	
 		try {
-			sauvegardeXML("./WebContent/XML/lieux/lieux-"+l.getUniqueID()+".xml", l);
+			sauvegardeXML(chemin+"/lieux/lieux-"+l.getUniqueID()+".xml", l);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -285,13 +294,14 @@ public class GestionEvent {
 		
 	}
 	
-	public static void createEvent(String idLieux,String nomEvent, String typeEvent, String sport,String artiste,String detailEvent, Date dateEvent) {
+	public static void createEvent(String chemin,String idLieux,String nomEvent, String typeEvent, String sport,String artiste,String detailEvent, Date dateEvent) throws IOException {
 		InformationEvent info = new InformationEvent(nomEvent,typeEvent,sport,artiste,detailEvent,dateEvent);
-		Lieux l = getLieu(idLieux);
+		Lieux l = getLieu(chemin,idLieux);
+		
 		if(l != null && info != null){
 			Evenement e = new Evenement(info,l);
 			try {
-				sauvegardeXML("./WebContent/XML/event/event-"+e.getUniqueID()+".xml", e);
+				sauvegardeXML(chemin+"/event/event-"+e.getUniqueID()+".xml", e);
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -304,9 +314,11 @@ public class GestionEvent {
 	
 	private static void sauvegardeXML(String chemin,Object o) throws FileNotFoundException, JAXBException{
 		StringWriter writer = new StringWriter();
-		
-		PrintWriter file = new PrintWriter(chemin);
+		File newFile = new File(chemin);
+		newFile.getParentFile().mkdirs();
 
+		PrintWriter file = new PrintWriter(newFile);
+		
 		JAXBContext context = JAXBContext.newInstance(o.getClass());
 		Marshaller m = context.createMarshaller();
 		m.marshal(o, writer);	
@@ -316,4 +328,5 @@ public class GestionEvent {
 		file.close();
 		
 	}
+	
 }

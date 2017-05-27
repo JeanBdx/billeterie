@@ -4,6 +4,8 @@ package soa.jaxrslabs.metier;
 import javax.jws.WebService;
 import javax.mail.*;
 import javax.mail.internet.*;
+
+import java.io.InputStream;
 import java.util.*;
 import soa.jaxrslabs.billeterie.*;
 

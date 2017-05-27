@@ -14,7 +14,7 @@
 <meta name="author" content="">
 
 
-
+<!-- Bootstrap Core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
@@ -35,6 +35,12 @@
 <link href="css/agency.min.css" rel="stylesheet">
 <link href="css/agency.css" rel="stylesheet">
 
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
 
 </head>
 
@@ -72,35 +78,74 @@
 	<!-- Portfolio Grid Section -->
 	<section id="portfolio" class="bg-light-gray">
 		<div class="container">
-			<h4>Creation d'un lieu</h4>
-			<BR />
-			<form action="CreationLieu" method="post">
-
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading">Créer un évènement</h2>
+				</div>
+			</div>
+			<form action="CreationEvent" method="post" id="formCreateEvent">
 				<div class="form-group row">
-					<label for="example-text-input" class="col-2 col-form-label">Lieu</label>
+					<label for="example-date-input" class="col-2 col-form-label">Date</label>
 					<div class="col-10">
-						<input class="form-control" type="text" value="" id="label_lieu"
-							name="localisation" required>
+						<input class="form-control" type="date" value="2011-08-19"
+							name="date_input">
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="example-number-input" class="col-2 col-form-label">Nombre
-						de catégories</label>
+					<label for="example-time-input" class="col-2 col-form-label">Heure</label>
 					<div class="col-10">
-						<input class="form-control" type="number" name="nbCategorie"
-							id="input_categories" name="nbCategorie" min="1" required>
+						<input class="form-control" type="time" value="13:45:00"
+							name="heure_input">
 					</div>
 				</div>
 
-				<!--Bloc crÃ©ation catÃ©gorie-->
-				<div class="col-10">
-
-					<div class="form-group row" id="blocs"></div>
-					<div class="text-center">
-						<input type="submit" class="btn btn-warning" id="submitLieux">
+				<div class="form-group row">
+					<label for="example-text-input" class="col-2 col-form-label">Nom
+						de l'évènement</label>
+					<div class="col-10">
+						<input class="form-control" type="text" value=""
+							name="nom_event_input">
 					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="lieuxEvent" class="col-2 col-form-label">Lieu
+						de l'évènement</label>
+					<div class="col-10">
+						<select name="lieuxEvent">
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="example-text-input" class="col-2 col-form-label">Type
+						d'évènement (sport, spectacle ...)</label>
+					<div class="col-10">
+						<input class="form-control" type="text" value="" name="type_input">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="example-text-input" class="col-2 col-form-label">Informations
+						complémentaires sur l'évènement</label>
+					<div class="col-10">
+						<input class="form-control" type="text" value=""
+							name="infos_input">
+					</div>
+				</div>
+
+
+				<center>
+					<button type="B" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Créer l'évènement </button>
+				</center>
 			</form>
+
+
+
+
+
+
 
 
 		</div>
@@ -128,7 +173,7 @@
 
 	<!-- Theme JavaScript -->
 	<script src="js/agency.min.js"></script>
-	<script src="lieu.js"></script>
+	<script src="script.js"></script>
 
 </body>
 
