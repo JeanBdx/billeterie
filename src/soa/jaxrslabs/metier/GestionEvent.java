@@ -135,15 +135,70 @@ public class GestionEvent {
 			try {
 				Lieux l = (Lieux) u.unmarshal(content[i]);
 				listeLieux.add(l);
-				return listeLieux;
+				
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return null;
-	}
+		return listeLieux;
 
+	}
+	public static ArrayList<String> NomZones(String chemin, String idEvent, String nomCategorie) throws IOException{
+		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
+		ArrayList<String> nomZones = new ArrayList<>();
+		for (int i = 0; i < currentEvent.getLieux().getCategories().size(); i++) {
+			if(currentEvent.getLieux().getCategories().get(i).getNomCategorie().equals(nomCategorie.trim())){
+				for(int j=0;j<currentEvent.getLieux().getCategories().get(i).getZones().size();j++){
+					nomZones.add(currentEvent.getLieux().getCategories().get(i).getZones().get(j).getNomZone());
+				}
+			}
+		}
+		return nomZones;
+	}
+	
+	public static ArrayList<String> NomRang(String chemin, String idEvent, String nomCategorie,String nomZone) throws IOException{
+		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
+		ArrayList<String> nomRang = new ArrayList<>();
+		for (int i = 0; i < currentEvent.getLieux().getCategories().size(); i++) {
+			if(currentEvent.getLieux().getCategories().get(i).getNomCategorie().equals(nomCategorie.trim())){
+				for(int j=0;j<currentEvent.getLieux().getCategories().get(i).getZones().size();j++){
+					if(currentEvent.getLieux().getCategories().get(i).getZones().get(j).getNomZone().equals(nomZone.trim())){
+						for(int k=0;k<currentEvent.getLieux().getCategories().get(i).getZones().get(j).getPlaces().size();k++){
+							if(!nomRang.contains(String.valueOf(currentEvent.getLieux().getCategories().get(i).getZones().get(j).getPlaces().get(k).getRang()))){
+								nomRang.add(String.valueOf(currentEvent.getLieux().getCategories().get(i).getZones().get(j).getPlaces().get(k).getRang()));
+							}
+						}
+				
+					}
+					
+				}
+			}
+		}
+		return nomRang;
+	}
+	
+	public static ArrayList<String> NomPlace(String chemin, String idEvent, String nomCategorie,String nomZone,String nomRang) throws IOException{
+		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
+		ArrayList<String> nomPlace = new ArrayList<>();
+		for (int i = 0; i < currentEvent.getLieux().getCategories().size(); i++) {
+			if(currentEvent.getLieux().getCategories().get(i).getNomCategorie().equals(nomCategorie.trim())){
+				for(int j=0;j<currentEvent.getLieux().getCategories().get(i).getZones().size();j++){
+					if(currentEvent.getLieux().getCategories().get(i).getZones().get(j).getNomZone().equals(nomZone.trim())){
+						for(int k=0;k<currentEvent.getLieux().getCategories().get(i).getZones().get(j).getPlaces().size();k++){
+							if(currentEvent.getLieux().getCategories().get(i).getZones().get(j).getPlaces().get(k).getRang() == Integer.valueOf(nomRang)){
+								nomPlace.add(String.valueOf(currentEvent.getLieux().getCategories().get(i).getZones().get(j).getPlaces().get(k).getNumero())); 
+							}
+						}
+				
+					}
+					
+				}
+			}
+		}
+		return nomPlace;
+	}
+	
 	public static Evenement getEvenement(String chemin,String idEvent) throws IOException {
 
 		File source = new File(chemin+"/event/");
@@ -179,7 +234,7 @@ public class GestionEvent {
 		return null;
 	}
 	
-	public ArrayList<Evenement> getEvenements(String chemin) throws IOException {
+	public static ArrayList<Evenement> getEvenements(String chemin) throws IOException {
 	
 		File source = new File(chemin+"/event/");
 		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
@@ -203,13 +258,13 @@ public class GestionEvent {
 			try {
 				Evenement e = (Evenement) u.unmarshal(content[i]);
 				listeEvent.add(e);
-				return listeEvent;
+			
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return listeEvent;
 	}
 
 	public void reserverPlace(String chemin,String idEvent, String nomCategorie, String nomZone, String escalier, int numero,
@@ -294,8 +349,8 @@ public class GestionEvent {
 		
 	}
 	
-	public static void createEvent(String chemin,String idLieux,String nomEvent, String typeEvent, String sport,String artiste,String detailEvent, Date dateEvent) throws IOException {
-		InformationEvent info = new InformationEvent(nomEvent,typeEvent,sport,artiste,detailEvent,dateEvent);
+	public static void createEvent(String chemin,String idLieux,String nomEvent, String typeEvent, String detailEvent, Date dateEvent) throws IOException {
+		InformationEvent info = new InformationEvent(nomEvent,typeEvent,detailEvent,dateEvent);
 		Lieux l = getLieu(chemin,idLieux);
 		
 		if(l != null && info != null){
@@ -311,6 +366,8 @@ public class GestionEvent {
 			}
 		}
 	}
+	
+	
 	
 	private static void sauvegardeXML(String chemin,Object o) throws FileNotFoundException, JAXBException{
 		StringWriter writer = new StringWriter();

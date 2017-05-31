@@ -83,7 +83,7 @@
 					<h2 class="section-heading">Créer un évènement</h2>
 				</div>
 			</div>
-			<form action="CreationEvent" method="post" id="formCreateEvent">
+			<form method="post" id="formCreateEvent">
 				<div class="form-group row">
 					<label for="example-date-input" class="col-2 col-form-label">Date</label>
 					<div class="col-10">
@@ -113,7 +113,7 @@
 					<label for="lieuxEvent" class="col-2 col-form-label">Lieu
 						de l'évènement</label>
 					<div class="col-10">
-						<select name="lieuxEvent">
+						<select name="lieuxEvent" id="lieuxEvent">
 						</select>
 					</div>
 				</div>
@@ -130,14 +130,14 @@
 					<label for="example-text-input" class="col-2 col-form-label">Informations
 						complémentaires sur l'évènement</label>
 					<div class="col-10">
-						<input class="form-control" type="text" value=""
-							name="infos_input">
+						<textarea class="form-control" style="resize:none" type="text" row="4"
+							name="infos_input"></textarea>
 					</div>
 				</div>
 
 
 				<center>
-					<button type="B" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Créer l'évènement </button>
+					<button type="submit" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Créer l'évènement </button>
 				</center>
 			</form>
 

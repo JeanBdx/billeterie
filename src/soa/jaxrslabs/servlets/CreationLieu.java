@@ -52,7 +52,7 @@ public class CreationLieu extends HttpServlet {
 		}
 	;
 	Properties prop = new Properties();
-	InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/classes/chemin.properties");
+	InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
 	prop.load(input);
 	String chemin = prop.getProperty("mon_path_xml");
 	GestionEvent.createLieu(chemin,localisation, categories);

@@ -69,10 +69,7 @@ public class ReservationPlace extends HttpServlet {
 	    	Civilite_Billet = civilite;
 	    }
 	    
-	    GestionEvent gerer = new GestionEvent();
-	    Place placeReserve = gerer.getPlace(id_event, categorie, zone, id_place);
-	    gerer.reserverPlace(id_event, categorie, zone, placeReserve.getEscalier(), placeReserve.getNumero(), placeReserve.getRang());
-	    
+	 
 	    /*
 	    DateTime dt = new DateTime();
 	   
@@ -90,14 +87,6 @@ public class ReservationPlace extends HttpServlet {
 	        message = "Commande créée avec succès !";
 	    }
 	*/
-	    Evenement e = gerer.getEvenement(id_event);
-	    Participant p = new Participant(Civilite_Billet, Nom_Billet, Prenom_Billet);
-	    Reservation r = new Reservation(p, e.getLieux().getLocalisation(), placeReserve);
-	    Billet billetReserve = new Billet(e.getInformationEvent(),p,r);
-	    
-	    GestionBillet gererBillet = new GestionBillet();
-	    
-	    gererBillet.creerMail(billetReserve);
 
 	    /* Transmission à la page JSP en charge de l'affichage des données */
 	  //  this.getServletContext().getRequestDispatcher( "/afficherCommande.jsp" ).forward( request, response );

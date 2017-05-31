@@ -2,11 +2,7 @@ package soa.jaxrslabs.servlets;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.io.PrintWriter;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
@@ -15,19 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import soa.jaxrslabs.metier.GestionEvent;
 
 /**
- * Servlet implementation class CreationEvent
+ * Servlet implementation class InfoLieux
  */
-@WebServlet("/CreationEvent")
-public class CreationEvent extends HttpServlet {
+@WebServlet("/InfoLieux")
+public class InfoLieux extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreationEvent() {
+    public InfoLieux() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,30 +41,15 @@ public class CreationEvent extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idLieux = request.getParameter("idLieux");
-		String date = request.getParameter("date_input");
-		String heure = request.getParameter("heure_input");
-		String nomEvent = request.getParameter("nom_event_input");
-		String typeEvent = request.getParameter("type_input");
-		String detailEvent = request.getParameter("infos_input");
-		Date dateConvert = new Date();
-		DateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-		String dateEntiere = date+" "+heure;
-		try {
-			dateConvert = format.parse(dateEntiere);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		Properties prop = new Properties();
-		System.out.println(this.getServletContext());
 		InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
 		prop.load(input);
 		String chemin = prop.getProperty("mon_path_xml");
-		GestionEvent.createEvent(chemin, idLieux, nomEvent, typeEvent, detailEvent, dateConvert);
-		response.getWriter().write("ok");
 		
+	
+		response.setContentType("application/json");
+		String retour = new Gson().toJson(GestionEvent.getLieux(chemin));
+		response.getWriter().write(retour);
 	}
 
 }

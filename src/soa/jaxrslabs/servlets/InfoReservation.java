@@ -1,17 +1,24 @@
 package soa.jaxrslabs.servlets;
-import com.google.gson.Gson;
-
-import soa.jaxrslabs.metier.GestionEvent;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Properties;
+
+import java.io.InputStream;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import soa.jaxrslabs.billeterie.Evenement;
+import soa.jaxrslabs.billeterie.Zone;
+import soa.jaxrslabs.metier.GestionEvent;
 
 /**
  * Servlet implementation class InfoReservation
@@ -29,19 +36,51 @@ public class InfoReservation extends HttpServlet {
     }
 
 	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+	}
+
+	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		GestionEvent e = new GestionEvent();
+		
 		Properties prop = new Properties();
-		InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/classes/chemin.properties");
+		InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
 		prop.load(input);
 		String chemin = prop.getProperty("mon_path_xml");
-		String json = new Gson().toJson(e.getEvenements(chemin));
-		response.setContentType( "application/json" );
-		response.setCharacterEncoding( "UTF-8" );
-		response.getWriter().write( new Gson().toJson( json ) );
-					
+		
+		if(request.getParameter("mode").equals("info")){
+			
+			response.setContentType("application/json");
+			String retour = new Gson().toJson(GestionEvent.getEvenements(chemin));
+			response.getWriter().write(retour);
+		}
+		if(request.getParameter("mode").equals("getZone")){
+			String idEvent = request.getParameter("idEvent");
+			String nomCategorie = request.getParameter("nomCategorie");
+			String retour = new Gson().toJson(GestionEvent.NomZones(chemin, idEvent, nomCategorie));
+			response.getWriter().write(retour);
+		}
+		if(request.getParameter("mode").equals("getRang")){
+			String idEvent = request.getParameter("idEvent");
+			String nomCategorie = request.getParameter("nomCategorie");
+			String nomZone = request.getParameter("nomZone");
+			String retour = new Gson().toJson(GestionEvent.NomRang(chemin, idEvent, nomCategorie,nomZone));
+			response.getWriter().write(retour);
+		}
+		if(request.getParameter("mode").equals("getPlace")){
+			String idEvent = request.getParameter("idEvent");
+			String nomCategorie = request.getParameter("nomCategorie");
+			String nomZone = request.getParameter("nomZone");
+			String nomRang = request.getParameter("nomRang");
+			String retour = new Gson().toJson(GestionEvent.NomPlace(chemin, idEvent, nomCategorie, nomZone, nomRang));
+			response.getWriter().write(retour);
+		}
 	}
 
 }
