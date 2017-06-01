@@ -23,58 +23,30 @@ import soa.jaxrslabs.billeterie.*;
 
 @WebService
 public class GestionEvent {
-	
-	public static Place getPlace(String chemin,String idEvent, String nomCategorie, String nomZone, String idPlace) throws IOException{
-
-		File source = new File(chemin+"/event/");
-		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
-		File[] content = source.listFiles();
-		for (int i = 0; i < content.length; i++) {
-			JAXBContext jc = null;
-			try {
-				jc = JAXBContext.newInstance(Evenement.class);
-			} catch (JAXBException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			Unmarshaller u = null;
-			try {
-				u = jc.createUnmarshaller();
-			} catch (JAXBException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			try {
-				Evenement e = (Evenement) u.unmarshal(content[i]);
-				if (idEvent.equals(e.getUniqueID())) {
-					for(int j=0;j<e.getLieux().getCategories().size();j++){
-						Categorie current = e.getLieux().getCategories().get(j);
-						if(nomCategorie.equals(current.getNomCategorie())){
-							for(int k=0;k<current.getZones().size();k++){
-								Zone currentZone = current.getZones().get(k);
-								if(nomZone.equals(currentZone.getNomZone())){
-									for(int l=0;l<currentZone.getPlaces().size();l++){
-										Place currentPlace = currentZone.getPlaces().get(l);
-										if(idPlace.equals(currentPlace.getIdPlace())){
-											return currentPlace;
-										}
-									}
-								}
+	// categorie, zone, rang, place
+	public static Place getPlace(String chemin, String idEvent, String nomCategorie,String nomZone,String nomRang, String nomPlace) throws IOException{
+		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
+		Place myPlace = new Place();
+		for (int i = 0; i < currentEvent.getLieux().getCategories().size(); i++) {
+			if(currentEvent.getLieux().getCategories().get(i).getNomCategorie().equals(nomCategorie.trim())){
+				for(int j=0;j<currentEvent.getLieux().getCategories().get(i).getZones().size();j++){
+					if(currentEvent.getLieux().getCategories().get(i).getZones().get(j).getNomZone().equals(nomZone.trim())){
+						for(int k=0;k<currentEvent.getLieux().getCategories().get(i).getZones().get(j).getPlaces().size();k++){
+							if(currentEvent.getLieux().getCategories().get(i).getZones().get(j).getPlaces().get(k).getRang() == Integer.valueOf(nomRang) &&
+									currentEvent.getLieux().getCategories().get(i).getZones().get(j).getPlaces().get(k).getNumero() == Integer.valueOf(nomPlace)){
+								myPlace = currentEvent.getLieux().getCategories().get(i).getZones().get(j).getPlaces().get(k); 
 							}
 						}
-						
+				
 					}
+					
 				}
-				else {
-					return null;
-				}
-			} catch (JAXBException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
-		return null;
+		return myPlace;
 	}
+	
+	
 
 	public static Lieux getLieu(String chemin,String idLieux) throws IOException {
 	
@@ -100,8 +72,8 @@ public class GestionEvent {
 				Lieux l = (Lieux) u.unmarshal(content[i]);
 				if (idLieux.equals(l.getUniqueID())) {
 					return l;
-				} else {
-					return null;
+				}else{
+					i++;
 				}
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
@@ -267,7 +239,7 @@ public class GestionEvent {
 		return listeEvent;
 	}
 
-	public void reserverPlace(String chemin,String idEvent, String nomCategorie, String nomZone, String escalier, int numero,
+	public static void reserverPlace(String chemin,String idEvent, String nomCategorie, String nomZone, String escalier, int numero,
 			int rang) throws IOException {
 			Evenement current = getEvenement(chemin,idEvent);
 		if (current != null) {

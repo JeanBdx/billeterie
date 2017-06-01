@@ -3,28 +3,32 @@ package soa.jaxrslabs.billeterie;
 
 public class Reservation {
 
-	private Participant participant = new Participant();
+	private Acheteur acheteur = new Acheteur();
 	private String nomLieux;
 	private Place place = new Place();
+	private String nomCategorie;
+	private String nomZone;
 	
 	public Reservation() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reservation(Participant participant, String nomLieux, Place place) {
+	public Reservation(Acheteur acheteur, String nomLieux, Place place, String nomCategorie, String nomZone) {
 		super();
-		this.participant = participant;
+		this.acheteur = acheteur;
 		this.nomLieux = nomLieux;
 		this.place = place;
+		this.nomCategorie = nomCategorie;
+		this.nomZone = nomZone;
 	}
 
-	public Participant getParticipant() {
-		return participant;
+	public Acheteur getAcheteur() {
+		return acheteur;
 	}
 
-	public void setParticipant(Participant participant) {
-		this.participant = participant;
+	public void setAcheteur(Acheteur acheteur) {
+		this.acheteur = acheteur;
 	}
 
 	public String getNomLieux() {
@@ -42,7 +46,25 @@ public class Reservation {
 	public void setPlace(Place place) {
 		this.place = place;
 	}
-	
 
+	public String getNomCategorie() {
+		return nomCategorie;
+	}
+
+	public void setNomCategorie(String nomCategorie) {
+		this.nomCategorie = nomCategorie;
+	}
+
+	public String getNomZone() {
+		return nomZone;
+	}
+
+	public void setNomZone(String nomZone) {
+		this.nomZone = nomZone;
+	}
+
+	
+	
+	
 	
 }

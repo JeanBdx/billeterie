@@ -60,7 +60,6 @@ public class CreationEvent extends HttpServlet {
 		}
 		
 		Properties prop = new Properties();
-		System.out.println(this.getServletContext());
 		InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
 		prop.load(input);
 		String chemin = prop.getProperty("mon_path_xml");
@@ -68,5 +67,4 @@ public class CreationEvent extends HttpServlet {
 		response.getWriter().write("ok");
 		
 	}
-
 }
