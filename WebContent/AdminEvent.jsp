@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ page session="true" %>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -43,7 +44,7 @@
     <![endif]-->
 
 </head>
-
+<% if(session.getAttribute("sessionUtilisateur") != null){ %>
 <body id="page-top" class="index">
 
 	<nav id="mainNav"
@@ -64,9 +65,10 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="hidden"><a href="#page-top"></a></li>
-					<li><a class="page-scroll" href="AdminChoix.html">Accueil
+					<li><a class="page-scroll" href="AdminChoix.jsp">Accueil
 							administrateur</a></li>
-					<li><a class="page-scroll" href="Connexion.html">Deconnexion</a>
+							
+					<li><a class="page-scroll" href="Deconnexion">Deconnexion</a>
 					</li>
 				</ul>
 			</div>
@@ -176,5 +178,5 @@
 	<script src="script.js"></script>
 
 </body>
-
+<% }; %>
 </html>

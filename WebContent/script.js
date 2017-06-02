@@ -24,7 +24,7 @@ $("#formCreateEvent").submit(function(event){
 		data: $data,
 		success:function(donnee,statut){
 			if(donnee == "ok"){
-				$(location).attr('href','AdminChoix.html');
+				$(location).attr('href','AdminChoix.jsp');
 			}
 			
 		}

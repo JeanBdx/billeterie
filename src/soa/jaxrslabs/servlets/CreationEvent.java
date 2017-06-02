@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
@@ -50,7 +51,7 @@ public class CreationEvent extends HttpServlet {
 		String typeEvent = request.getParameter("type_input");
 		String detailEvent = request.getParameter("infos_input");
 		Date dateConvert = new Date();
-		DateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.FRENCH);
 		String dateEntiere = date+" "+heure;
 		try {
 			dateConvert = format.parse(dateEntiere);

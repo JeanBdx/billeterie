@@ -20,6 +20,9 @@ p {
 p.large {
   font-size: 16px;
 }
+p.large:first-letter {
+    text-transform: uppercase;
+}
 a,
 a:hover,
 a:focus,

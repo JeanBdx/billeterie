@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -32,7 +36,7 @@
     <![endif]-->
 
 </head>
-
+<% if(session.getAttribute("sessionUtilisateur") != null ){ %>
 <body id="page-top" class="index">
 
 <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -51,9 +55,8 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="Connexion.html">Deconnexion</a>
-                    </li>
+                    <li><a class="page-scroll" href="Deconnexion">Deconnexion</a>
+					</li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -110,5 +113,5 @@
 
 
 </body>
-
+<% }; %>
 </html>

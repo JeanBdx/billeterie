@@ -61,7 +61,7 @@
                         <a class="page-scroll" href="Contact.html">Qui sommes nous ?</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="Connexion.html">Connexion</a>
+                        <a class="page-scroll" href="Connexion.jsp">Connexion</a>
                     </li>
                 </ul>
             </div>

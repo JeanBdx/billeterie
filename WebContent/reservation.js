@@ -10,7 +10,6 @@ $(document).ready(function(){
 			
 			$.each(data,function(index,element){
 				
-				console.log(data);
 				$("#affichage_event").append("<div class='col-md-4 col-sm-6 portfolio-item'>"+
                 "<a href='#portfolioModal"+i+"' class='portfolio-link' data-toggle='modal'>"+
                 "<div class='portfolio-hover'>"+
@@ -27,7 +26,7 @@ $(document).ready(function(){
             	"</div>");
 				
 				
-				$("#formReservationPlace").html("<div class='portfolio-modal modal fade' id='portfolioModal"+i+"' tabindex='-1' role='dialog' aria-hidden='true'>"+
+				$("#formReservationPlace").append("<div class='portfolio-modal modal fade' id='portfolioModal"+i+"' tabindex='-1' role='dialog' aria-hidden='true'>"+
 				        "<div class='modal-dialog'>"+
 			            "<div class='modal-content'>"+
 			                "<div class='close-modal' data-dismiss='modal'>"+
@@ -41,9 +40,9 @@ $(document).ready(function(){
 			                        "<div class='col-lg-8 col-lg-offset-2'>"+
 			                            "<div class='modal-body'>"+
 			                                "<h2>"+ element.informationEvent.nomEvent.toLowerCase() +"</h2>"+
-			                                "<p class='item-intro text-muted'>"+ element.lieux.localisation.toLowerCase() +"</p>"+
-			                                "<p class='item-intro text-muted'>"+ element.informationEvent.dateEvent.toLowerCase() +"</p>"+
-			                                "<p>"+ element.informationEvent.detailEvent.toLowerCase() +"</p>"+
+			                                "<p class='item-intro text-muted'>"+ element.lieux.localisation.toUpperCase() +"</p>"+
+			                                "<p class='item-intro text-muted'>"+ element.informationEvent.dateEvent +"</p>"+
+			                                "<p class='large text-muted'>"+ element.informationEvent.detailEvent.toLowerCase() +"</p>"+
 			                                "<form action='Reservation' method='POST' >"+
 			                                "<input type='hidden' id='id_event"+i+"' name='id_event' value='"+ element.uniqueID +"'/>"+
 			                                "<select class='form-control form-control-lg' id='categorie"+i+"'  name='categorie' required>"+

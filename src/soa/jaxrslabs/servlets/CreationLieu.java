@@ -56,7 +56,7 @@ public class CreationLieu extends HttpServlet {
 	prop.load(input);
 	String chemin = prop.getProperty("mon_path_xml");
 	GestionEvent.createLieu(chemin,localisation, categories);
-	response.sendRedirect("/biletteriev2/AdminChoix.html");
+	response.sendRedirect("/biletteriev2/AdminChoix.jsp");
 	}
 
 }

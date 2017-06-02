@@ -72,8 +72,6 @@ public class GestionEvent {
 				Lieux l = (Lieux) u.unmarshal(content[i]);
 				if (idLieux.equals(l.getUniqueID())) {
 					return l;
-				}else{
-					i++;
 				}
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
@@ -195,8 +193,6 @@ public class GestionEvent {
 				Evenement e = (Evenement) u.unmarshal(content[i]);
 				if (idEvent.equals(e.getUniqueID())) {
 					return e;
-				} else {
-					return null;
 				}
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block

@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -53,7 +57,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="Reservation.html">Réservation</a>
+                        <a class="page-scroll" href="Reservation.html">RÃ©servation</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="Contact.html">Qui sommes nous ?</a>
@@ -80,14 +84,16 @@
         <div class="col-md-offset-5 col-md-3">
             <div class="form-login">
             <h4><center>CONNEXION ADMINISTRATEUR</center></h4>
-            <input type="text" name="userName" class="form-control input-sm chat-input" placeholder="Identifiant" />
+            <form method="post" action="Connexion">
+            <input type="text" name="identifiant" class="form-control input-sm chat-input" placeholder="Identifiant" />
             </br>
-            <input type="text" name="userPassword" class="form-control input-sm chat-input" placeholder="Mot de passe" />
+            <input type="text" name="motdepasse" class="form-control input-sm chat-input" placeholder="Mot de passe" />
             </br>
             <div class="wrapper">
             <span class="group-btn">     
-                <center><a href="AdminChoix.html" class="btn btn-primary btn-md">Se connecter <i class="fa fa-sign-in"></i></a></center>
+                <button type="submit" class="btn btn-primary btn-md">Se connecter <i class="fa fa-sign-in"></i></button>
             </span>
+            </form>
             </div>
             </div>
         
