@@ -6,7 +6,7 @@
         <dependent-module archiveName="mail.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/mail/mail">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <property name="java-output-path" value="/biletteriev2/build/classes"/>
         <property name="context-root" value="biletteriev2"/>
+        <property name="java-output-path" value="/biletteriev2/build/classes"/>
     </wb-module>
 </project-modules>

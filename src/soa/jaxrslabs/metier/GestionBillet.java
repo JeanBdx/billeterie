@@ -12,6 +12,8 @@ import com.itextpdf.tool.xml.ElementList;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
 import com.sun.mail.util.MailSSLSocketFactory;
 
+import soa.jaxrslabs.beans.billeterie.*;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,7 +34,6 @@ import javax.mail.internet.*;
 
 import java.io.InputStream;
 import java.util.*;
-import soa.jaxrslabs.billeterie.*;
 
 @WebService
 /**
@@ -50,8 +51,8 @@ public class GestionBillet {
 	/**
 	 * Fonction d'envoi du billet par Mail
 	 * 
-	 * @param chemin 
-	 * @param b l'objet Billet
+	 * @param chemin - le chemin du pdf qui est stocke temporairement
+	 * @param b - l'objet Billet qui contient toutes le informations a avoir sur un billet
 	 * @throws IOException
 	 * @throws DocumentException
 	 * @throws GeneralSecurityException
@@ -126,10 +127,10 @@ public class GestionBillet {
 	}
 	
 	/**
-	 * Fonction qui va générer le Billet
+	 * Fonction qui va générer le Billet en PDF et le stocke temporairement
 	 * 
-	 * @param chemin
-	 * @param b
+	 * @param chemin - le chemin du pdf qui est stocke temporairement
+	 * @param b - l'objet Billet qui contient toutes le informations a avoir sur un billet
 	 * @throws IOException
 	 * @throws DocumentException
 	 */
@@ -198,7 +199,6 @@ public class GestionBillet {
 		document.add(table);
 		document.close();
 
-		// step 5
 	}
 
 }

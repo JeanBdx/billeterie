@@ -1,4 +1,4 @@
-package soa.jaxrslabs.billeterie;
+package soa.jaxrslabs.beans.billeterie;
 
 /**
  * <b>Fonction permettant de définir une réservation.</b>
@@ -25,6 +25,8 @@ package soa.jaxrslabs.billeterie;
  * @see Place
  * @see Zone
  * 
+ * 
+ * @Author Jean Arhancetebehere
  */
 public class Reservation {
 

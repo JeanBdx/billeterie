@@ -1,4 +1,4 @@
-package soa.jaxrslabs.billeterie;
+package soa.jaxrslabs.beans.billeterie;
 
 import java.util.List;
 
@@ -15,6 +15,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * <li>Le prix de cette zone</li>
  * </ul>
  *
+ *
+ *@Author Jean Arhancetebehere
  */
 public class Zone {
 	private String nomZone;

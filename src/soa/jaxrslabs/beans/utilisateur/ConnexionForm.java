@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 //import mettre le beans utilisateur
 
 /** 
+ * 
+ * 
  * <b>Fonction de connexion.</b>
  * <p>
  * La connexion se caractérise par les informations suivantes :
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  *@see Utilisateur
  *
+ *@Author Jean Arhancetebehere
  */
 public final class ConnexionForm {
 	

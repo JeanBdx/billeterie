@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import soa.jaxrslabs.billeterie.Evenement;
-import soa.jaxrslabs.billeterie.Zone;
+import soa.jaxrslabs.beans.billeterie.Evenement;
+import soa.jaxrslabs.beans.billeterie.Zone;
 import soa.jaxrslabs.metier.GestionEvent;
 
 /**

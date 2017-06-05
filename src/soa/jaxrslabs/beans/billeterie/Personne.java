@@ -1,4 +1,4 @@
-package soa.jaxrslabs.billeterie;
+package soa.jaxrslabs.beans.billeterie;
 
 /**
  * 
@@ -7,6 +7,8 @@ package soa.jaxrslabs.billeterie;
  * @see Acheteur
  * @see Participant
  *
+ *
+ *@Author Jean Arhancetebehere
  */
 public class Personne {
 	private String civilite;

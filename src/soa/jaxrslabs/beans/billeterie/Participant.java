@@ -1,4 +1,4 @@
-package soa.jaxrslabs.billeterie;
+package soa.jaxrslabs.beans.billeterie;
 
 /**
  * Fonction qui étend Personne pour définir la personne qui participera à l'évenement.
@@ -6,6 +6,8 @@ package soa.jaxrslabs.billeterie;
  * @see Personne
  * @see Reservation
  *
+ *
+ *@Author Jean Arhancetebehere
  */
 public class Participant extends Personne {
 	

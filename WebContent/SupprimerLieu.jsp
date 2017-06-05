@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ page session="true" %>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,7 +31,7 @@
 
 
 </head>
-
+<% if(session.getAttribute("sessionUtilisateur") != null ){ %>
 <body id="page-top" class="index">
 
 <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -63,7 +68,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Supprimer un évènement</h2>
+                    <h2 class="section-heading">Supprimer un lieu</h2>
                 </div>
             </div>
 
@@ -94,5 +99,5 @@
 
 
 </body>
-
+<% }; %>
 </html>

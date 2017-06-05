@@ -1,4 +1,4 @@
-package soa.jaxrslabs.billeterie;
+package soa.jaxrslabs.beans.billeterie;
 
 
 import java.util.Date;
@@ -12,6 +12,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * 
  * @see Reservation
  * @see Evenement
+ * 
+ * @Author Jean Arhancetebehere
  *
  */
 public class InformationEvent {

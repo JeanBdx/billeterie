@@ -1,4 +1,4 @@
-package soa.jaxrslabs.billeterie;
+package soa.jaxrslabs.beans.billeterie;
 
 import java.security.SecureRandom;
 
@@ -9,6 +9,7 @@ import java.security.SecureRandom;
  * @see InformationEvent
  * @see Participant
  * 
+ * @Author Jean Arhancetebehere
  */
 public class Billet {
 	private SecureRandom numeroBillet = new SecureRandom();

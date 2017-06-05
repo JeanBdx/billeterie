@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itextpdf.text.DocumentException;
 
-import soa.jaxrslabs.billeterie.*;
+import soa.jaxrslabs.beans.billeterie.*;
 import soa.jaxrslabs.metier.*;
 
 /**

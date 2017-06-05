@@ -1,4 +1,4 @@
-package soa.jaxrslabs.billeterie;
+package soa.jaxrslabs.beans.billeterie;
 import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @see Reservation
  * 
  *
+ *@Author Jean Arhancetebehere
  */
 public class Place {
 	

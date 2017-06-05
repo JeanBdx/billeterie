@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import soa.jaxrslabs.*;
-import soa.jaxrslabs.billeterie.Categorie;
+import soa.jaxrslabs.beans.billeterie.Categorie;
 import soa.jaxrslabs.metier.GestionEvent;
 /**
  * Servlet implementation class CreationLieu
@@ -56,7 +56,7 @@ public class CreationLieu extends HttpServlet {
 	prop.load(input);
 	String chemin = prop.getProperty("mon_path_xml");
 	GestionEvent.createLieu(chemin,localisation, categories);
-	response.sendRedirect("/biletteriev2/AdminChoix.jsp");
+	response.sendRedirect("AdminChoix.jsp");
 	}
 
 }

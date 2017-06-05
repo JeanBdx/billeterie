@@ -17,9 +17,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-
-
-import soa.jaxrslabs.billeterie.*;
+import soa.jaxrslabs.beans.billeterie.*;
 
 @WebService
 /**
@@ -30,7 +28,7 @@ import soa.jaxrslabs.billeterie.*;
 public class GestionEvent {
 	// categorie, zone, rang, place
 	/**
-	 * Fonction d'attribution de place
+	 * Fonction qui recupère un objet Place correspondant à un evenement particulier pour une Categorie, une zone, un rang, et un numéro de Place
 	 * 
 	 * @param chemin
 	 * @param idEvent
@@ -146,8 +144,8 @@ public class GestionEvent {
 	}
 	
 	/**
-	 * Fonction ajoutant une zone Ã  un lieu.
-	 * 
+	 * Fonction qui permet de retourner tous les noms de Zone d'une categorie(d'un evenement) passé en paramètre 
+	 * Elle est appelée dans le formulaire de réservation de place 
 	 * @param chemin
 	 * @param idEvent
 	 * @param nomCategorie
@@ -168,8 +166,8 @@ public class GestionEvent {
 	}
 	
 	/**
-	 * Fonction ajoutant un rang Ã  un lieu.
-	 * 
+	 * Fonction qui permet de retourner tous les noms des Rang d'une categorie & d'une zone passé en paramètre 
+	 * Elle est appelée dans le formulaire de réservation de place 
 	 * @param chemin
 	 * @param idEvent
 	 * @param nomCategorie
@@ -199,8 +197,8 @@ public class GestionEvent {
 	}
 	
 	/**
-	 * Fonction ajoutant une place Ã  un lieu.
-	 * 
+	 * Fonction qui permet de retourner tous les noms des Places d'une categorie & d'une zone & d'un rang passé en paramètre 
+	 * Elle est appelée dans le formulaire de réservation de place 
 	 * @param chemin
 	 * @param idEvent
 	 * @param nomCategorie
@@ -272,7 +270,7 @@ public class GestionEvent {
 	}
 	
 	/**
-	 * 
+	 * Fonction qui recupere tous les evenements stocké dans le fichier /XML/event
 	 * @param chemin
 	 * @return
 	 * @throws IOException
@@ -311,7 +309,7 @@ public class GestionEvent {
 	}
 
 	/**
-	 * Fonction qui permet la rÃ©servation
+	 * Fonction qui permet la rÃ©servation d'une place
 	 * 
 	 * @see Reservation
 	 * 
@@ -455,7 +453,7 @@ public class GestionEvent {
 	
 	
 	/**
-	 * Fonction permettant la sauvegarde des informations renseignÃ©es.
+	 * Fonction permettant la sauvegarde, en transformant un Objet o en XML
 	 * 
 	 * @param chemin
 	 * @param o

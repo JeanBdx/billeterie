@@ -1,4 +1,4 @@
-package soa.jaxrslabs.billeterie;
+package soa.jaxrslabs.beans.billeterie;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,6 +16,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  * 
  * @see Reservation
  * @see InformationEvent
+ * 
+ * 
+ * @Author Jean Arhancetebehere
  */
 public class Evenement {
 		

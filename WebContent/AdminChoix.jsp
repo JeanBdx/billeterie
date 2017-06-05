@@ -78,12 +78,30 @@
                     <a href="AdminLieu.jsp"><center> Créer un lieu</center></a>
                 </h3>
             </div>
+             <div class="col-md-3 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="img/retirer.png" alt="">
+                </a>
+                <h3>
+                    <a href="SupprimerLieu.jsp"><center>Supprimer un lieu</center></a>
+                </h3>
+            </div>
             <div class="col-md-6 portfolio-item">
                 <a href="AdminEvent.jsp">
                     <img class="img-responsive" src="img/event.jpg" alt="">
                 </a>
                 <h3>
                     <a href="AdminEvent.jsp"><center>Créer un évènement</center></a>
+                </h3>
+            </div>
+            
+            
+            <div class="col-md-3 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="img/retirer.png" alt="">
+                </a>
+                <h3>
+                    <a href="SupprimerEvent.html"><center>Supprimer un évènement</center></a>
                 </h3>
             </div>
         </div>

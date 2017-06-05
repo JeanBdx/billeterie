@@ -1,10 +1,12 @@
-package soa.jaxrslabs.billeterie;
+package soa.jaxrslabs.beans.billeterie;
 
 /**
  * Fonction qui étend personne pour définir la personne qui achète.
  * 
  * @see Personne
  * @see Reservation
+ * 
+ * @Author Jean Arhancetebehere
  */
 public class Acheteur extends Personne{
 

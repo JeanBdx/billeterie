@@ -1,4 +1,4 @@
-package soa.jaxrslabs.billeterie;
+package soa.jaxrslabs.beans.billeterie;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -13,6 +13,8 @@ import java.util.List;
  * 
  * @see Reservation
  * @see Zone
+ * 
+ * @Author Jean Arhancetebehere
  */
 public class Categorie {
 	private String nomCategorie;
