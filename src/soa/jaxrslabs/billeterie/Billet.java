@@ -2,6 +2,14 @@ package soa.jaxrslabs.billeterie;
 
 import java.security.SecureRandom;
 
+/**
+ * Définition d'un objet billet.
+ * 
+ * @see Reservation
+ * @see InformationEvent
+ * @see Participant
+ * 
+ */
 public class Billet {
 	private SecureRandom numeroBillet = new SecureRandom();
 	private InformationEvent informationEvent;
@@ -13,7 +21,14 @@ public class Billet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Fonction permettant de construire le billet
+	 * 
+	 * @param informationEvent Les données propres à un évenement
+	 * @param participant La Personne qui participe à l'évenement
+	 * @param reservation Les données de réservation
+	 */
 	public Billet(InformationEvent informationEvent, Participant participant, Reservation reservation) {
 		super();
 	

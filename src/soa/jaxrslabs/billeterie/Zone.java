@@ -6,7 +6,16 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
+/**
+ * 
+ * Fonction qui va définir les caractéristiques d'une zone :
+ * <ul>
+ * <li>Le nom de la zone</li>
+ * <li>Le nombre de place de la zone</li>
+ * <li>Le prix de cette zone</li>
+ * </ul>
+ *
+ */
 public class Zone {
 	private String nomZone;
 	private List<Place> places;

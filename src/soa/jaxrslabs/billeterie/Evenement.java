@@ -11,6 +11,12 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="evenement")
+/**
+ * Fonction permettant de construire un evenement.
+ * 
+ * @see Reservation
+ * @see InformationEvent
+ */
 public class Evenement {
 		
 		private String uniqueID = UUID.randomUUID().toString();
@@ -61,6 +67,9 @@ public class Evenement {
 		}
 
 		@Override
+		/**
+		 * 
+		 */
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
@@ -71,6 +80,9 @@ public class Evenement {
 		}
 
 		@Override
+		/**
+		 * La fonction permet valider la création d'un évenement.
+		 */
 		public boolean equals(Object obj) {
 			if (this == obj)
 				return true;

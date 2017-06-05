@@ -22,8 +22,25 @@ import javax.xml.bind.Unmarshaller;
 import soa.jaxrslabs.billeterie.*;
 
 @WebService
+/**
+ * 
+ * Fonction servant à la gestion et la création des évenements.
+ *
+ */
 public class GestionEvent {
 	// categorie, zone, rang, place
+	/**
+	 * Fonction d'attribution de place
+	 * 
+	 * @param chemin
+	 * @param idEvent
+	 * @param nomCategorie
+	 * @param nomZone
+	 * @param nomRang
+	 * @param nomPlace
+	 * @return Retourne la place réservée
+	 * @throws IOException
+	 */
 	public static Place getPlace(String chemin, String idEvent, String nomCategorie,String nomZone,String nomRang, String nomPlace) throws IOException{
 		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
 		Place myPlace = new Place();
@@ -47,7 +64,14 @@ public class GestionEvent {
 	}
 	
 	
-
+	/**
+	 * Fonction de récupération du lieu.
+	 * 
+	 * @param chemin
+	 * @param idLieux
+	 * @return
+	 * @throws IOException
+	 */
 	public static Lieux getLieu(String chemin,String idLieux) throws IOException {
 	
 		File source = new File(chemin+"/lieux/");
@@ -81,6 +105,12 @@ public class GestionEvent {
 		return null;
 	}
 	
+	/**
+	 * Fonction listant les différents Lieux.
+	 * @param chemin
+	 * @return
+	 * @throws IOException
+	 */
 	public static ArrayList<Lieux> getLieux(String chemin) throws IOException {
 		
 		File source = new File(chemin+"/lieux/");
@@ -114,6 +144,16 @@ public class GestionEvent {
 		return listeLieux;
 
 	}
+	
+	/**
+	 * Fonction ajoutant une zone à un lieu.
+	 * 
+	 * @param chemin
+	 * @param idEvent
+	 * @param nomCategorie
+	 * @return
+	 * @throws IOException
+	 */
 	public static ArrayList<String> NomZones(String chemin, String idEvent, String nomCategorie) throws IOException{
 		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
 		ArrayList<String> nomZones = new ArrayList<>();
@@ -127,6 +167,16 @@ public class GestionEvent {
 		return nomZones;
 	}
 	
+	/**
+	 * Fonction ajoutant un rang à un lieu.
+	 * 
+	 * @param chemin
+	 * @param idEvent
+	 * @param nomCategorie
+	 * @param nomZone
+	 * @return
+	 * @throws IOException
+	 */
 	public static ArrayList<String> NomRang(String chemin, String idEvent, String nomCategorie,String nomZone) throws IOException{
 		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
 		ArrayList<String> nomRang = new ArrayList<>();
@@ -148,6 +198,17 @@ public class GestionEvent {
 		return nomRang;
 	}
 	
+	/**
+	 * Fonction ajoutant une place à un lieu.
+	 * 
+	 * @param chemin
+	 * @param idEvent
+	 * @param nomCategorie
+	 * @param nomZone
+	 * @param nomRang
+	 * @return
+	 * @throws IOException
+	 */
 	public static ArrayList<String> NomPlace(String chemin, String idEvent, String nomCategorie,String nomZone,String nomRang) throws IOException{
 		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
 		ArrayList<String> nomPlace = new ArrayList<>();
@@ -169,6 +230,14 @@ public class GestionEvent {
 		return nomPlace;
 	}
 	
+	/**
+	 * Fonction récupérant les données d'évenement.
+	 * 
+	 * @param chemin
+	 * @param idEvent
+	 * @return
+	 * @throws IOException
+	 */
 	public static Evenement getEvenement(String chemin,String idEvent) throws IOException {
 
 		File source = new File(chemin+"/event/");
@@ -202,6 +271,12 @@ public class GestionEvent {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param chemin
+	 * @return
+	 * @throws IOException
+	 */
 	public static ArrayList<Evenement> getEvenements(String chemin) throws IOException {
 	
 		File source = new File(chemin+"/event/");
@@ -235,6 +310,20 @@ public class GestionEvent {
 		return listeEvent;
 	}
 
+	/**
+	 * Fonction qui permet la réservation
+	 * 
+	 * @see Reservation
+	 * 
+	 * @param chemin
+	 * @param idEvent
+	 * @param nomCategorie
+	 * @param nomZone
+	 * @param escalier
+	 * @param numero
+	 * @param rang
+	 * @throws IOException
+	 */
 	public static void reserverPlace(String chemin,String idEvent, String nomCategorie, String nomZone, String escalier, int numero,
 			int rang) throws IOException {
 			Evenement current = getEvenement(chemin,idEvent);
@@ -275,6 +364,16 @@ public class GestionEvent {
 		} 
 	}
 
+	/**
+	 * Fonction permettant à l'administrateur de créer une catégorie.
+	 * 
+	 * @param nomCategorie
+	 * @param nombreZone
+	 * @param nombreRang
+	 * @param nbPlace
+	 * @param prix
+	 * @return
+	 */
 	public static Categorie createCategorie(String nomCategorie, int nombreZone, int nombreRang, int nbPlace,int...prix){
 		if(!nomCategorie.isEmpty() && nombreZone != 0 & nbPlace != 0 ){
 			
@@ -302,6 +401,14 @@ public class GestionEvent {
 		
 	}
 	
+	/**
+	 * Fonction permettant à l'administrateur de créer un Lieu.
+	 * 
+	 * @param chemin
+	 * @param localisation
+	 * @param categories
+	 * @throws IOException
+	 */
 	public static void createLieu(String chemin,String localisation, ArrayList<Categorie> categories) throws IOException{
 		Lieux l = new Lieux(localisation,categories);
 	
@@ -317,6 +424,17 @@ public class GestionEvent {
 		
 	}
 	
+	/**
+	 * Fonction permettant à l'administrateur de créer un évenement.
+	 * 
+	 * @param chemin
+	 * @param idLieux
+	 * @param nomEvent
+	 * @param typeEvent
+	 * @param detailEvent
+	 * @param dateEvent
+	 * @throws IOException
+	 */
 	public static void createEvent(String chemin,String idLieux,String nomEvent, String typeEvent, String detailEvent, Date dateEvent) throws IOException {
 		InformationEvent info = new InformationEvent(nomEvent,typeEvent,detailEvent,dateEvent);
 		Lieux l = getLieu(chemin,idLieux);
@@ -336,7 +454,14 @@ public class GestionEvent {
 	}
 	
 	
-	
+	/**
+	 * Fonction permettant la sauvegarde des informations renseignées.
+	 * 
+	 * @param chemin
+	 * @param o
+	 * @throws FileNotFoundException
+	 * @throws JAXBException
+	 */
 	private static void sauvegardeXML(String chemin,Object o) throws FileNotFoundException, JAXBException{
 		StringWriter writer = new StringWriter();
 		File newFile = new File(chemin);

@@ -3,6 +3,13 @@ import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Fonction définissant une place dans un lieu.
+ * 
+ * @see Reservation
+ * 
+ *
+ */
 public class Place {
 	
 	private String idPlace = UUID.randomUUID().toString();
@@ -15,9 +22,11 @@ public class Place {
 		// TODO Auto-generated constructor stub
 	}
 	/**
-	 * @param numero
-	 * @param escalier
-	 * @param rang
+	 * Constructeur d'un objet Place
+	 * 
+	 * @param numero Numéro de la place.
+	 * @param escalier Escalier de la zone.
+	 * @param rang Rang de la place.
 	 */
 	public Place(int numero, String escalier, int rang) {
 		super();
@@ -64,6 +73,9 @@ public class Place {
 		return result;
 	}
 	@Override
+	/**
+	 * Vérification de la validité de l'objet Place
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

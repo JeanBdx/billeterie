@@ -8,16 +8,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 
-
+/**
+ * Fonction de permettant de définir les catégories d'un lieu.
+ * 
+ * @see Reservation
+ * @see Zone
+ */
 public class Categorie {
 	private String nomCategorie;
-
-	private List<Zone> zones;
+	
 	/**
+	 * Récupère la liste des zones
+	 */
+	private List<Zone> zones;
+	
+	/**
+	 * Construit une catégorie composé de x zones.
 	 * @param nomCategorie
 	 * @param zones
 	 */
-	
 	public Categorie(String nomCategorie, List<Zone> zones) {
 		super();
 		this.nomCategorie = nomCategorie;

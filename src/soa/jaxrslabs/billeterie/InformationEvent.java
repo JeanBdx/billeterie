@@ -6,6 +6,14 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="informationEvent")
+/**
+ * 
+ * Fonction qui va donner les informations d'un évenement
+ * 
+ * @see Reservation
+ * @see Evenement
+ *
+ */
 public class InformationEvent {
 
 		
@@ -68,6 +76,9 @@ public class InformationEvent {
 			return result;
 		}
 		@Override
+		/**
+		 * Fonction qui vérifie que les informations sont valide
+		 */
 		public boolean equals(Object obj) {
 			if (this == obj)
 				return true;

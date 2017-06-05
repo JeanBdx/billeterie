@@ -35,9 +35,27 @@ import java.util.*;
 import soa.jaxrslabs.billeterie.*;
 
 @WebService
+/**
+ * 
+ * Fonction qui va administrer la gestion des billets :
+ * <ul>
+ * <li>CrÃ©ation du Billet</li>
+ * <li>Envoi Ã  l'Acheteur</li>
+ * </ul>
+ *
+ */
 public class GestionBillet {
 	private static final String password = "QmJaLrMp2K17";
-
+	
+	/**
+	 * Fonction d'envoi du billet par Mail
+	 * 
+	 * @param chemin 
+	 * @param b l'objet Billet
+	 * @throws IOException
+	 * @throws DocumentException
+	 * @throws GeneralSecurityException
+	 */
 	public static void creerMail(String chemin, Billet b) throws IOException, DocumentException, GeneralSecurityException {
 
 		try {
@@ -72,8 +90,8 @@ public class GestionBillet {
 			chaine.append("Veuillez trouver ci-joint le billet pour : <br>");
 			chaine.append(b.getInformationEvent().getNomEvent() + " - " + b.getReservation().getNomLieux()+"<br>");
 			chaine.append("Le " + b.getInformationEvent().getDateEvent()+"<br>");
-			chaine.append("Merci de votre réservation,<br><br>");
-			chaine.append("L'équipe MyLittleTicket");
+			chaine.append("Merci de votre rï¿½servation,<br><br>");
+			chaine.append("L'ï¿½quipe MyLittleTicket");
 			messageBodyPart.setText(chaine.toString());
 			messageBodyPart.setContent(chaine.toString(), "text/html");
 			multipart.addBodyPart(messageBodyPart);
@@ -88,7 +106,7 @@ public class GestionBillet {
 			messageBodyPart.setFileName("Reservation_" + b.getParticipant().getNom() + ".pdf");
 			multipart.addBodyPart(messageBodyPart);
 
-			// ajout des éléments au mail
+			// ajout des ï¿½lï¿½ments au mail
 			message.setContent(multipart);
 
 			message.setSentDate(new Date());
@@ -106,7 +124,15 @@ public class GestionBillet {
 		}
 
 	}
-
+	
+	/**
+	 * Fonction qui va gÃ©nÃ©rer le Billet
+	 * 
+	 * @param chemin
+	 * @param b
+	 * @throws IOException
+	 * @throws DocumentException
+	 */
 	public static void genererPdfBillet(String chemin, Billet b) throws IOException, DocumentException {
 		Document document = new Document();
 
@@ -156,7 +182,7 @@ public class GestionBillet {
 		  sb.append("  <div >");
 		  sb.append("  <p> IDENTITE DU SPECTATEUR </p>");
 		  sb.append("  <p> Nom: " + b.getParticipant().getNom() + "</p>");
-		  sb.append("  <p> Prénom : " + b.getParticipant().getPrenom() + " </p>");
+		  sb.append("  <p> Prï¿½nom : " + b.getParticipant().getPrenom() + " </p>");
 		  sb.append("  </div>");
 		  sb.append("  </div>");
 		  sb.append("</body>");

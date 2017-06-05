@@ -1,15 +1,24 @@
 package soa.jaxrslabs.billeterie;
 
-
+/**
+ * 
+ * Fonction définissant un objet Personne
+ * 
+ * @see Acheteur
+ * @see Participant
+ *
+ */
 public class Personne {
 	private String civilite;
 	private String nom;
 	private String prenom;
 	
 	/**
-	 * @param civilite
-	 * @param nom
-	 * @param prenom
+	 * Une personne se définit par 3 paramètres
+	 * 
+	 * @param civilite Mr, Mme, Mlle
+	 * @param nom Nom de la personne
+	 * @param prenom Prénom de la personne
 	 */
 	public Personne(String civilite, String nom, String prenom) {
 		super();
@@ -73,6 +82,9 @@ public class Personne {
 
 
 	@Override
+	/**
+	 * Fonction vérifaiant la validité de l'objet Personne
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

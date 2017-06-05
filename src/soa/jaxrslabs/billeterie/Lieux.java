@@ -12,6 +12,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="lieux")
 
+/**
+ * 
+ * Fonction qui va servir à la création d'un lieu.
+ * 
+ * @see Reservation
+ * @see Categorie
+ *
+ */
 public class Lieux {
 	
 	private String uniqueID = UUID.randomUUID().toString();
@@ -67,6 +75,10 @@ public class Lieux {
 	}
 
 	@Override
+	
+	/**
+	 * Validation de la bonne saisie du lieu.
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

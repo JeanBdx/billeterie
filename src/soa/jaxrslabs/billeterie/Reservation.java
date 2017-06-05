@@ -1,6 +1,31 @@
 package soa.jaxrslabs.billeterie;
 
-
+/**
+ * <b>Fonction permettant de définir une réservation.</b>
+ * <p>
+ * Une réservation se compose :
+ * <ul>
+ * <li>D'un Acheteur</li>
+ * <li>D'un Partcipant (peut être différent de l'Acheteur</li>
+ * <li>D'un Lieu</li>
+ * <li>D'une Place</li>
+ * <li>D'une Catégorie</li>
+ * <li>D'une Zone</li>
+ * </ul>
+ * </p>
+ *
+ * @see Acheteur
+ * @see Billet
+ * @see Categorie
+ * @see Evenement
+ * @see InformationEvent
+ * @see Lieux
+ * @see Participant
+ * @see Personne
+ * @see Place
+ * @see Zone
+ * 
+ */
 public class Reservation {
 
 	private Acheteur acheteur = new Acheteur();

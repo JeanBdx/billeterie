@@ -1,6 +1,11 @@
 package soa.jaxrslabs.billeterie;
 
-
+/**
+ * Fonction qui étend personne pour définir la personne qui achète.
+ * 
+ * @see Personne
+ * @see Reservation
+ */
 public class Acheteur extends Personne{
 
 	private String adresse;
@@ -8,13 +13,14 @@ public class Acheteur extends Personne{
 	private String mail;
 	
 	/**
+	 * Définition d'une Personne Acheteur
 	 * 
-	 * @param civilite
-	 * @param nom
-	 * @param prenom
-	 * @param adresse
-	 * @param tel
-	 * @param mail
+	 * @param civilite Mr, Mme, Mlle
+	 * @param nom Nom de l'acheteur
+	 * @param prenom Prenom de l'acheteur
+	 * @param adresse Adresse de l'acheteur
+	 * @param tel Téléphone de l'acheteur
+	 * @param mail Mail de l'acheteur
 	 */
 	public Acheteur(String civilite, String nom, String prenom, String adresse, String tel, String mail) {
 		super(civilite, nom, prenom);
@@ -22,11 +28,15 @@ public class Acheteur extends Personne{
 		this.tel = tel;
 		this.mail = mail;
 	}
+	
+	/**
+	 * Constructeur d'un Acheteur.
+	 */
 	public Acheteur() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Acheteur [adresse=" + adresse + ", tel=" + tel + ", mail=" + mail + "]";
