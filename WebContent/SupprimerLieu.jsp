@@ -96,6 +96,9 @@
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
+    <footer>
+		<div class="centre_texte"> Projet Web Billetterie</div>
+	</footer>
 
 
 </body>

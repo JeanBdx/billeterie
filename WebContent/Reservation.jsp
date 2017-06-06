@@ -113,6 +113,9 @@
    
  
 	<script src="reservation.js"></script>
+	<footer>
+		<div class="centre_texte"> Projet Web Billetterie</div>
+	</footer>
     
 
 </body>

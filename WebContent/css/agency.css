@@ -6,6 +6,7 @@
 body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: black;
 }
 .text-muted {
   color: #777777;
@@ -616,16 +617,21 @@ section#contact .text-danger {
   color: #e74c3c;
 }
 footer {
-  padding: 25px 0;
   text-align: center;
+  color: white;
+  background-color: black;
+  padding-bottom: 50px;
+  padding-top:50px;
+  position: relative;
+  line-height: 50px;
 }
-footer span.copyright {
+span.copyright {
   line-height: 40px;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   text-transform: none;
 }
-footer ul.quicklinks {
+ul.quicklinks {
   margin-bottom: 0;
   line-height: 40px;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
