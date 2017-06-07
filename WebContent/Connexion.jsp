@@ -57,13 +57,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="Reservation.html">RÃ©servation</a>
+                        <a class="page-scroll" href="Reservation.jsp">Réservation</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="Contact.html">Qui sommes nous ?</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="Connexion.html">Connexion</a>
+                        <a class="page-scroll" href="Connexion.jsp">Connexion</a>
                     </li>
                 </ul>
             </div>
@@ -87,11 +87,11 @@
             <form method="post" action="Connexion">
             <input type="text" name="identifiant" class="form-control input-sm chat-input" placeholder="Identifiant" />
             </br>
-            <input type="text" name="motdepasse" class="form-control input-sm chat-input" placeholder="Mot de passe" />
+            <input type="password" name="motdepasse" class="form-control input-sm chat-input" placeholder="Mot de passe" />
             </br>
             <div class="wrapper">
             <span class="group-btn">     
-                <button type="submit" class="btn btn-primary btn-md">Se connecter <i class="fa fa-sign-in"></i></button>
+                <center><button type="submit" class="btn btn-primary btn-md">Se connecter <i class="fa fa-sign-in"></i></button></center>
             </span>
             </form>
             </div>
