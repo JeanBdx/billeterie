@@ -22,7 +22,7 @@ import soa.jaxrslabs.metier.GestionEvent;
  * Servlet implementation class CreationEvent
  * 
  * @see GestionEvent
- * 
+ * @author Jean Arhancetebehere
  */
 @WebServlet("/CreationEvent")
 public class CreationEvent extends HttpServlet {

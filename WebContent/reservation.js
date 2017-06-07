@@ -104,7 +104,7 @@ $(document).ready(function(){
 			                                    "</div>"+
 			                                   "<div class='checkbox'>"+
 			                                    "<label>"+
-			                                      "<input type='checkbox' name='Bouton_Different' id='Bouton_Different"+i+"' value='different'> L'acheteur et le détenteur du billet sont différents"+
+			                                      "<input type='checkbox' name='Bouton_Different' id='Bouton_Different"+i+"' value='different'> L'acheteur et le détenteur du billet sont identiques"+
 			                                    "</label>"+
 			                                  "</div>"+
 			                                "<div id='Detenteur_Billet"+i+"' >"+

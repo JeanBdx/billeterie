@@ -23,6 +23,7 @@ import soa.jaxrslabs.beans.billeterie.*;
  * 
  * Fonction servant à la gestion et la création des évenements.
  *
+ *@author Jean Arhancetebehere
  */
 @WebService
 public class GestionEvent {
@@ -450,7 +451,28 @@ public class GestionEvent {
 			}
 		}
 	}
+
+	/**
+	 * Fonction permettant de supprimer un evenement
+	 * 
+	 * @param chemin
+	 * @param e
+	 */
+	public static boolean deleteEvent(String chemin, Evenement e){
+		File source = new File(chemin+"/event/event-"+e.getUniqueID()+".xml");
+		return source.delete();
+	}
 	
+	/**
+	 * Fonction permettant de supprimer un lieu
+	 * 
+	 * @param chemin
+	 * @param l
+	 */
+	public static boolean deleteLieu(String chemin, Lieux l){
+		File source = new File(chemin+"/lieux/lieux-"+l.getUniqueID()+".xml");
+		return source.delete();
+	}
 	
 	/**
 	 * Fonction permettant la sauvegarde, en transformant un Objet o en XML

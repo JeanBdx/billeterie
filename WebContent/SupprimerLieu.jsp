@@ -51,10 +51,9 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="AdminChoix.html">Accueil administrateur</a>
+                        <a class="page-scroll" href="AdminChoix.jsp">Accueil administrateur</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="Connexion.html">Deconnexion</a>
+                       <li><a class="page-scroll" href="Deconnexion">Deconnexion</a>
                     </li>
                 </ul>
             </div>
@@ -72,7 +71,20 @@
                 </div>
             </div>
 
-        <!-- Ecrire Ici-->
+        	<form method="post" id="deleteLieu">
+        	
+        	<div class="form-group row text-center">
+					<label for="lieuxEvent" class="col-2 col-form-label">Lieu
+						de l'évènement</label>
+					<div class="col-10">
+						<select name="lieuxEvent" id="lieuxEvent">
+						</select>
+					</div>
+				</div>
+        		<center>
+					<button type="submit" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Supprimer le lieux </button>
+				</center>
+        	</form>
 
         </div>
     </section>
@@ -96,6 +108,8 @@
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
+      <script src="suppression.js"></script>
+	<script src="script.js"></script>
     <footer>
 		<div class="centre_texte"> Projet Web Billetterie</div>
 	</footer>

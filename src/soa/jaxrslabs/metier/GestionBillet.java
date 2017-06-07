@@ -43,6 +43,7 @@ import java.util.*;
  * <li>Envoi à l'Acheteur</li>
  * </ul>
  *
+ *	@author Jean Arhancetebehere
  */
 @WebService
 public class GestionBillet {

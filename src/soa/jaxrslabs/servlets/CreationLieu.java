@@ -19,7 +19,7 @@ import soa.jaxrslabs.metier.GestionEvent;
  * Servlet implementation class CreationLieu
  * 
  * @see Lieux
- * 
+ * @author Jean Arhancetebehere
  */
 @WebServlet("/CreationLieu")
 public class CreationLieu extends HttpServlet {

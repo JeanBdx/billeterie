@@ -10,14 +10,17 @@ $('#input_categories').bind('input', function(){
 });
 
 $(document).on('input',"input[name^='nrb_zones']",function(){
-	console.log("Test");
-	idBloc = ($(this).parent().parent().attr('id'));
+	idBloc = document.activeElement.id;
+	idBloc = idBloc.substr(-1,1);
 	boucle = 1;
+	
 	$("#prix_zone_"+idBloc).empty();
 	while(boucle <= $(this).val()){
-		$("#prix_zone_"+idBloc).append("<div class='col-5' id='prix_zone_"+boucle+"'><label for='prix_place_"+boucle+"' class='col-2 col-form-label'>Prix de la zone "+boucle+" </label><div class='col-10'><input class='form-control' type='text' value=' ' name='prix_place_"+boucle+"' id='prix_place_"+boucle+"'></div></div>");
-		boucle++;
+	console.log(document.activeElement.id)
 
+	$("#prix_zone_"+idBloc).append("<div class='col-5' id='prix_zone_"+boucle+"'><label for='prix_place_"+boucle+"' class='col-2 col-form-label'>Prix de la zone "+boucle+" </label><div class='col-10'><input class='form-control' type='text' value=' ' name='prix_place_"+boucle+"' id='prix_place_"+boucle+"'></div></div>");
+	boucle++;
+	
 	}
 
 

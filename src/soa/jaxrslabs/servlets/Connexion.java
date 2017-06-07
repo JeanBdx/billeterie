@@ -17,7 +17,7 @@ import soa.jaxrslabs.beans.utilisateur.*;
  * Servlet permettant de gérer la connexion de l'administrateur.
  * 
  * @see ConnexionForm
- *
+ *@author Jean Arhancetebehere
  */
 @WebServlet("/Connexion")
 public class Connexion extends HttpServlet {

@@ -20,6 +20,8 @@ import soa.jaxrslabs.metier.*;
  * Servlet implementation class Reservation
  * 
  * @see Reservation
+ * 
+ * @author Jean Arhancetebehere
  */
 @WebServlet("/Reservation")
 public class ReservationPlace extends HttpServlet {

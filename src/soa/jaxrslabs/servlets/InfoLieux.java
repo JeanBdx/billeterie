@@ -17,6 +17,9 @@ import soa.jaxrslabs.metier.GestionEvent;
 
 /**
  * Servlet implementation class InfoLieux
+ * 
+ * 
+ * @author Jean Arhancetebehere
  */
 @WebServlet("/InfoLieux")
 public class InfoLieux extends HttpServlet {
