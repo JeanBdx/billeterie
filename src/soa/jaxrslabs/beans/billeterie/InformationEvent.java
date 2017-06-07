@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="informationEvent")
 /**
  * 
  * Fonction qui va donner les informations d'un évenement
@@ -16,6 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @Author Jean Arhancetebehere
  *
  */
+@XmlRootElement(name="informationEvent")
 public class InformationEvent {
 
 		

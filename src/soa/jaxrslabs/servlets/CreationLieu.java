@@ -17,6 +17,9 @@ import soa.jaxrslabs.beans.billeterie.Categorie;
 import soa.jaxrslabs.metier.GestionEvent;
 /**
  * Servlet implementation class CreationLieu
+ * 
+ * @see Lieux
+ * 
  */
 @WebServlet("/CreationLieu")
 public class CreationLieu extends HttpServlet {
@@ -34,7 +37,12 @@ public class CreationLieu extends HttpServlet {
     	
     }
     
-	@Override 
+	@Override
+	/**
+	 * Récupération des données saisies par l'administrateur.
+	 *  
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String localisation = request.getParameter("localisation");
 		String nbCategories = request.getParameter("nbCategorie");

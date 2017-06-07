@@ -13,7 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import soa.jaxrslabs.beans.utilisateur.*;
-
+/**
+ * Servlet permettant de gérer la connexion de l'administrateur.
+ * 
+ * @see ConnexionForm
+ *
+ */
 @WebServlet("/Connexion")
 public class Connexion extends HttpServlet {
     /**
@@ -25,12 +30,28 @@ public class Connexion extends HttpServlet {
     public static final String ATT_FORM         = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String VUE              = "connexion.jsp"; // VOIR SI LE NOM EST CORRECT DU JSP
-
+    
+    /**
+     * Affichage de la page de connexion.
+     * 
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     * 
+     */
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Affichage de la page de connexion */
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
-
+    
+    /**
+     * Récupération des données formulaire + vérification.
+     * <ul>
+     * <li>Si tout est ok : Connexion</li>
+     * <li>Si erreur : suppression de session</li>
+     * </ul>
+     * 
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     * 
+     */
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Préparation de l'objet formulaire */
         ConnexionForm form = new ConnexionForm();

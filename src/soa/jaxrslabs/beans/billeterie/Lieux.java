@@ -10,8 +10,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="lieux")
-
 /**
  * 
  * Fonction qui va servir à la création d'un lieu.
@@ -22,6 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  *@Author Jean Arhancetebehere
  */
+@XmlRootElement(name="lieux")
 public class Lieux {
 	
 	private String uniqueID = UUID.randomUUID().toString();

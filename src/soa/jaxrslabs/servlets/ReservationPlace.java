@@ -18,6 +18,8 @@ import soa.jaxrslabs.metier.*;
 
 /**
  * Servlet implementation class Reservation
+ * 
+ * @see Reservation
  */
 @WebServlet("/Reservation")
 public class ReservationPlace extends HttpServlet {
@@ -40,6 +42,8 @@ public class ReservationPlace extends HttpServlet {
 	}
 
 	/**
+	 * Récupération des informations saisies par l'utilisateur.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,7 +64,13 @@ public class ReservationPlace extends HttpServlet {
 	    String Prenom_Billet = null;
 	 
 	   
-	    
+	    /**
+	     * Récupération d'informations complémentaire si l'acheteur est différent du participant
+	     * 
+	     * @see Participant
+	     * @see Acheteur
+	     * 
+	     */
 	    if( request.getParameter("Bouton_Different") == "different") {
 	    	Civilite_Billet = request.getParameter("Civilite_Billet");
 	    	Nom_Billet = request.getParameter("Nom_Billet");

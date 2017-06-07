@@ -19,16 +19,16 @@ import javax.xml.bind.Unmarshaller;
 
 import soa.jaxrslabs.beans.billeterie.*;
 
-@WebService
 /**
  * 
  * Fonction servant Ã  la gestion et la crÃ©ation des Ã©venements.
  *
  */
+@WebService
 public class GestionEvent {
 	// categorie, zone, rang, place
 	/**
-	 * Fonction qui recupère un objet Place correspondant à un evenement particulier pour une Categorie, une zone, un rang, et un numéro de Place
+	 * Fonction qui recupï¿½re un objet Place correspondant ï¿½ un evenement particulier pour une Categorie, une zone, un rang, et un numï¿½ro de Place
 	 * 
 	 * @param chemin
 	 * @param idEvent
@@ -144,8 +144,8 @@ public class GestionEvent {
 	}
 	
 	/**
-	 * Fonction qui permet de retourner tous les noms de Zone d'une categorie(d'un evenement) passé en paramètre 
-	 * Elle est appelée dans le formulaire de réservation de place 
+	 * Fonction qui permet de retourner tous les noms de Zone d'une categorie(d'un evenement) passï¿½ en paramï¿½tre 
+	 * Elle est appelï¿½e dans le formulaire de rï¿½servation de place 
 	 * @param chemin
 	 * @param idEvent
 	 * @param nomCategorie
@@ -166,8 +166,8 @@ public class GestionEvent {
 	}
 	
 	/**
-	 * Fonction qui permet de retourner tous les noms des Rang d'une categorie & d'une zone passé en paramètre 
-	 * Elle est appelée dans le formulaire de réservation de place 
+	 * Fonction qui permet de retourner tous les noms des Rang d'une categorie & d'une zone passï¿½ en paramï¿½tre 
+	 * Elle est appelï¿½e dans le formulaire de rï¿½servation de place 
 	 * @param chemin
 	 * @param idEvent
 	 * @param nomCategorie
@@ -197,8 +197,8 @@ public class GestionEvent {
 	}
 	
 	/**
-	 * Fonction qui permet de retourner tous les noms des Places d'une categorie & d'une zone & d'un rang passé en paramètre 
-	 * Elle est appelée dans le formulaire de réservation de place 
+	 * Fonction qui permet de retourner tous les noms des Places d'une categorie & d'une zone & d'un rang passï¿½ en paramï¿½tre 
+	 * Elle est appelï¿½e dans le formulaire de rï¿½servation de place 
 	 * @param chemin
 	 * @param idEvent
 	 * @param nomCategorie
@@ -270,7 +270,7 @@ public class GestionEvent {
 	}
 	
 	/**
-	 * Fonction qui recupere tous les evenements stocké dans le fichier /XML/event
+	 * Fonction qui recupere tous les evenements stockï¿½ dans le fichier /XML/event
 	 * @param chemin
 	 * @return
 	 * @throws IOException

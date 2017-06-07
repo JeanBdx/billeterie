@@ -35,7 +35,6 @@ import javax.mail.internet.*;
 import java.io.InputStream;
 import java.util.*;
 
-@WebService
 /**
  * 
  * Fonction qui va administrer la gestion des billets :
@@ -45,6 +44,7 @@ import java.util.*;
  * </ul>
  *
  */
+@WebService
 public class GestionBillet {
 	private static final String password = "QmJaLrMp2K17";
 	

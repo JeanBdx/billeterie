@@ -15,7 +15,8 @@ import javax.servlet.http.HttpSession;
 public class Deconnexion extends HttpServlet {
    
 	private static final long serialVersionUID = 1L;
-	  /**
+	
+	 /**
      * @see HttpServlet#HttpServlet()
      */
     public Deconnexion() {
@@ -23,17 +24,25 @@ public class Deconnexion extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     @Override
+    /** 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	// TODO Auto-generated method stub
     	super.doPost(req, resp);
     }
     @Override
+    /**
+     * R√©cup√©ration et destruction de la session + redirection Home Page.
+     * 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
    	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        /* RÈcupÈration et destruction de la session en cours */
+        /* R√©cup√©ration et destruction de la session en cours */
         HttpSession session = request.getSession();
         session.invalidate();
 
-        /* Redirection vers le Site du ZÈro ! */
+        /* Redirection vers la home page ! */
         response.sendRedirect("index.html" );
     }
 }

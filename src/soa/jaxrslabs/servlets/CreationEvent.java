@@ -20,6 +20,9 @@ import soa.jaxrslabs.metier.GestionEvent;
 
 /**
  * Servlet implementation class CreationEvent
+ * 
+ * @see GestionEvent
+ * 
  */
 @WebServlet("/CreationEvent")
 public class CreationEvent extends HttpServlet {
@@ -41,6 +44,8 @@ public class CreationEvent extends HttpServlet {
 	}
 
 	/**
+	 * Récupération des données saisies par l'administrateur.
+	 *  
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

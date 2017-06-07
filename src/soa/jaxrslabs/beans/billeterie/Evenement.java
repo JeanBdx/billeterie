@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="evenement")
 /**
  * Fonction permettant de construire un evenement.
  * 
@@ -20,6 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * 
  * @Author Jean Arhancetebehere
  */
+@XmlRootElement(name="evenement")
 public class Evenement {
 		
 		private String uniqueID = UUID.randomUUID().toString();
