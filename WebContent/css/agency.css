@@ -757,3 +757,6 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #fed136;
 }
+.nom_web_real{
+	color: black;
+}
