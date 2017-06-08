@@ -86,17 +86,18 @@ public class ReservationPlace extends HttpServlet {
 		InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
 		prop.load(input);
 		String chemin = prop.getProperty("mon_path_xml");
-		Evenement e = GestionEvent.getEvenement(chemin, id_event);
+		GestionEvent g = new GestionEvent(chemin);
+		Evenement e = g.getEvenement( id_event);
 	    InformationEvent info = e.getInformationEvent();
 	    Participant p = new Participant(Civilite_Billet,Nom_Billet,Prenom_Billet);
 	    Acheteur a = new Acheteur(civilite, nom, prenom, adresse, telephone, email);
-	    Place myPlace = GestionEvent.getPlace(chemin, id_event, categorie, zone, rang, place);
+	    Place myPlace = g.getPlace(id_event, categorie, zone, rang, place);
 	    Reservation r = new Reservation(a, e.getLieux().getLocalisation(), myPlace,categorie, zone);
 	    Billet b  = new Billet(info,p,r);
-	    
-	    GestionEvent.reserverPlace(chemin, id_event, categorie, zone, myPlace.getEscalier(), myPlace.getNumero(), myPlace.getRang());
+	    GestionBillet gb = new GestionBillet(b, chemin);
+	    g.reserverPlace(id_event, categorie, zone, myPlace.getEscalier(), myPlace.getNumero(), myPlace.getRang());
 		try {
-			GestionBillet.creerMail(chemin, b);
+			gb.creerMail();
 		} catch (DocumentException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

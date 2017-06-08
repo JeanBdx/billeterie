@@ -49,10 +49,10 @@ public class SupprimerEvent extends HttpServlet {
 		InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
 		prop.load(input);
 		String chemin = prop.getProperty("mon_path_xml");
+		GestionEvent g = new GestionEvent(chemin);
+		Evenement e = g.getEvenement( idEvent);
 		
-		Evenement e = GestionEvent.getEvenement(chemin, idEvent);
-		
-		if(GestionEvent.deleteEvent(chemin, e) == true){
+		if(g.deleteEvent( e) == true){
 			response.getWriter().write("ok");
 		}
 		

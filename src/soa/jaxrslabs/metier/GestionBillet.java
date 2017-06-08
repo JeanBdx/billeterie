@@ -48,7 +48,27 @@ import java.util.*;
 @WebService
 public class GestionBillet {
 	private static final String password = "QmJaLrMp2K17";
+
+	private Billet b;
+	private String chemin;
 	
+	
+	
+	public GestionBillet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+	public GestionBillet(Billet b, String chemin) {
+		super();
+		this.b = b;
+		this.chemin = chemin;
+	}
+
+
+
 	/**
 	 * Fonction d'envoi du billet par Mail
 	 * 
@@ -58,7 +78,7 @@ public class GestionBillet {
 	 * @throws DocumentException
 	 * @throws GeneralSecurityException
 	 */
-	public static void creerMail(String chemin, Billet b) throws IOException, DocumentException, GeneralSecurityException {
+	public void creerMail() throws IOException, DocumentException, GeneralSecurityException {
 
 		try {
 			MailSSLSocketFactory sf = new MailSSLSocketFactory();
@@ -99,7 +119,7 @@ public class GestionBillet {
 			multipart.addBodyPart(messageBodyPart);
 			
 			chemin += "/Reservation_" + b.getParticipant().getNom() + ".pdf";
-			genererPdfBillet(chemin, b);
+			genererPdfBillet();
 			
 			// creation et ajout de la piece jointe
 			messageBodyPart = new MimeBodyPart();
@@ -135,7 +155,7 @@ public class GestionBillet {
 	 * @throws IOException
 	 * @throws DocumentException
 	 */
-	public static void genererPdfBillet(String chemin, Billet b) throws IOException, DocumentException {
+	public void genererPdfBillet() throws IOException, DocumentException {
 		Document document = new Document();
 
 		PdfWriter.getInstance(document, new FileOutputStream(chemin));

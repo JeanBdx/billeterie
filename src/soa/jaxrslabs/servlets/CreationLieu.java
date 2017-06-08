@@ -47,6 +47,11 @@ public class CreationLieu extends HttpServlet {
 		String localisation = request.getParameter("localisation");
 		String nbCategories = request.getParameter("nbCategorie");
 		ArrayList<Categorie> categories = new ArrayList<>();
+		Properties prop = new Properties();
+		InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
+		prop.load(input);
+		String chemin = prop.getProperty("mon_path_xml");
+		GestionEvent g = new GestionEvent(chemin);
 		for(int i=1;i<=Integer.valueOf(nbCategories);i++){
 			String nomCategorie = request.getParameter("label_categorie_"+i);
 			int nbZone = Integer.valueOf(request.getParameter("nrb_zones_"+i));
@@ -56,14 +61,11 @@ public class CreationLieu extends HttpServlet {
 			for(int j=1;j<=nbZone;j++){
 				prix.add(Integer.valueOf(request.getParameter("prix_place_"+j)));
 			}
-			categories.add(GestionEvent.createCategorie(nomCategorie, nbZone, nbRang, nbPlace, prix.stream().mapToInt(Integer::intValue).toArray()));
+			categories.add(g.createCategorie(nomCategorie, nbZone, nbRang, nbPlace, prix.stream().mapToInt(Integer::intValue).toArray()));
 		}
 	;
-	Properties prop = new Properties();
-	InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
-	prop.load(input);
-	String chemin = prop.getProperty("mon_path_xml");
-	GestionEvent.createLieu(chemin,localisation, categories);
+
+	g.createLieu(localisation, categories);
 	response.sendRedirect("AdminChoix.jsp");
 	}
 

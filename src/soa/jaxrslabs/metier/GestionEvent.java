@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Properties;
 
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -27,6 +28,23 @@ import soa.jaxrslabs.beans.billeterie.*;
  */
 @WebService
 public class GestionEvent {
+	
+	
+	private String chemin;
+	
+	
+	public GestionEvent() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public GestionEvent(String chemin) {
+		super();
+		this.chemin = chemin;
+	}
+
+
 	// categorie, zone, rang, place
 	/**
 	 * Fonction qui recup�re un objet Place correspondant � un evenement particulier pour une Categorie, une zone, un rang, et un num�ro de Place
@@ -40,8 +58,9 @@ public class GestionEvent {
 	 * @return Retourne la place réservée
 	 * @throws IOException
 	 */
-	public static Place getPlace(String chemin, String idEvent, String nomCategorie,String nomZone,String nomRang, String nomPlace) throws IOException{
-		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
+
+	public  Place getPlace(String idEvent, String nomCategorie,String nomZone,String nomRang, String nomPlace) throws IOException{
+		Evenement currentEvent = getEvenement(idEvent);
 		Place myPlace = new Place();
 		for (int i = 0; i < currentEvent.getLieux().getCategories().size(); i++) {
 			if(currentEvent.getLieux().getCategories().get(i).getNomCategorie().equals(nomCategorie.trim())){
@@ -71,7 +90,8 @@ public class GestionEvent {
 	 * @return
 	 * @throws IOException
 	 */
-	public static Lieux getLieu(String chemin,String idLieux) throws IOException {
+	
+	public  Lieux getLieu(String idLieux) throws IOException {
 	
 		File source = new File(chemin+"/lieux/");
 		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
@@ -110,7 +130,8 @@ public class GestionEvent {
 	 * @return
 	 * @throws IOException
 	 */
-	public static ArrayList<Lieux> getLieux(String chemin) throws IOException {
+	
+	public  ArrayList<Lieux> getLieux() throws IOException {
 		
 		File source = new File(chemin+"/lieux/");
 		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
@@ -153,8 +174,9 @@ public class GestionEvent {
 	 * @return
 	 * @throws IOException
 	 */
-	public static ArrayList<String> NomZones(String chemin, String idEvent, String nomCategorie) throws IOException{
-		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
+
+	public  ArrayList<String> NomZones(String idEvent, String nomCategorie) throws IOException{
+		Evenement currentEvent = getEvenement( idEvent);
 		ArrayList<String> nomZones = new ArrayList<>();
 		for (int i = 0; i < currentEvent.getLieux().getCategories().size(); i++) {
 			if(currentEvent.getLieux().getCategories().get(i).getNomCategorie().equals(nomCategorie.trim())){
@@ -176,8 +198,9 @@ public class GestionEvent {
 	 * @return
 	 * @throws IOException
 	 */
-	public static ArrayList<String> NomRang(String chemin, String idEvent, String nomCategorie,String nomZone) throws IOException{
-		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
+	
+	public  ArrayList<String> NomRang( String idEvent, String nomCategorie,String nomZone) throws IOException{
+		Evenement currentEvent = getEvenement(idEvent);
 		ArrayList<String> nomRang = new ArrayList<>();
 		for (int i = 0; i < currentEvent.getLieux().getCategories().size(); i++) {
 			if(currentEvent.getLieux().getCategories().get(i).getNomCategorie().equals(nomCategorie.trim())){
@@ -208,8 +231,9 @@ public class GestionEvent {
 	 * @return
 	 * @throws IOException
 	 */
-	public static ArrayList<String> NomPlace(String chemin, String idEvent, String nomCategorie,String nomZone,String nomRang) throws IOException{
-		Evenement currentEvent = GestionEvent.getEvenement(chemin, idEvent);
+
+	public  ArrayList<String> NomPlace( String idEvent, String nomCategorie,String nomZone,String nomRang) throws IOException{
+		Evenement currentEvent = getEvenement( idEvent);
 		ArrayList<String> nomPlace = new ArrayList<>();
 		for (int i = 0; i < currentEvent.getLieux().getCategories().size(); i++) {
 			if(currentEvent.getLieux().getCategories().get(i).getNomCategorie().equals(nomCategorie.trim())){
@@ -237,7 +261,8 @@ public class GestionEvent {
 	 * @return
 	 * @throws IOException
 	 */
-	public static Evenement getEvenement(String chemin,String idEvent) throws IOException {
+
+	public  Evenement getEvenement(String idEvent) throws IOException {
 
 		File source = new File(chemin+"/event/");
 		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
@@ -276,7 +301,8 @@ public class GestionEvent {
 	 * @return
 	 * @throws IOException
 	 */
-	public static ArrayList<Evenement> getEvenements(String chemin) throws IOException {
+	
+	public  ArrayList<Evenement> getEvenements() throws IOException {
 	
 		File source = new File(chemin+"/event/");
 		// de quoi descendre dans les sous r�pertoires et ainsi tester le nom
@@ -323,9 +349,10 @@ public class GestionEvent {
 	 * @param rang
 	 * @throws IOException
 	 */
-	public static void reserverPlace(String chemin,String idEvent, String nomCategorie, String nomZone, String escalier, int numero,
+	
+	public  void reserverPlace(String idEvent, String nomCategorie, String nomZone, String escalier, int numero,
 			int rang) throws IOException {
-			Evenement current = getEvenement(chemin,idEvent);
+			Evenement current = getEvenement(idEvent);
 		if (current != null) {
 			Iterator<Categorie> cat = current.getLieux().getCategories().iterator();
 			while (cat.hasNext()) {
@@ -373,7 +400,8 @@ public class GestionEvent {
 	 * @param prix
 	 * @return
 	 */
-	public static Categorie createCategorie(String nomCategorie, int nombreZone, int nombreRang, int nbPlace,int...prix){
+	
+	public  Categorie createCategorie(String nomCategorie, int nombreZone, int nombreRang, int nbPlace,int...prix){
 		if(!nomCategorie.isEmpty() && nombreZone != 0 & nbPlace != 0 ){
 			
 			//ArrayList<Place> places = new ArrayList<>();
@@ -408,7 +436,8 @@ public class GestionEvent {
 	 * @param categories
 	 * @throws IOException
 	 */
-	public static void createLieu(String chemin,String localisation, ArrayList<Categorie> categories) throws IOException{
+
+	public  void createLieu(String localisation, ArrayList<Categorie> categories) throws IOException{
 		Lieux l = new Lieux(localisation,categories);
 	
 		try {
@@ -434,9 +463,9 @@ public class GestionEvent {
 	 * @param dateEvent
 	 * @throws IOException
 	 */
-	public static void createEvent(String chemin,String idLieux,String nomEvent, String typeEvent, String detailEvent, Date dateEvent) throws IOException {
+	public  void createEvent(String idLieux,String nomEvent, String typeEvent, String detailEvent, Date dateEvent) throws IOException {
 		InformationEvent info = new InformationEvent(nomEvent,typeEvent,detailEvent,dateEvent);
-		Lieux l = getLieu(chemin,idLieux);
+		Lieux l = getLieu(idLieux);
 		
 		if(l != null && info != null){
 			Evenement e = new Evenement(info,l);
@@ -458,7 +487,8 @@ public class GestionEvent {
 	 * @param chemin
 	 * @param e
 	 */
-	public static boolean deleteEvent(String chemin, Evenement e){
+	
+	public boolean deleteEvent(Evenement e){
 		File source = new File(chemin+"/event/event-"+e.getUniqueID()+".xml");
 		return source.delete();
 	}
@@ -469,7 +499,8 @@ public class GestionEvent {
 	 * @param chemin
 	 * @param l
 	 */
-	public static boolean deleteLieu(String chemin, Lieux l){
+
+	public boolean deleteLieu( Lieux l){
 		File source = new File(chemin+"/lieux/lieux-"+l.getUniqueID()+".xml");
 		return source.delete();
 	}
@@ -482,7 +513,8 @@ public class GestionEvent {
 	 * @throws FileNotFoundException
 	 * @throws JAXBException
 	 */
-	private static void sauvegardeXML(String chemin,Object o) throws FileNotFoundException, JAXBException{
+	
+	private void sauvegardeXML(String chemin,Object o) throws FileNotFoundException, JAXBException{
 		StringWriter writer = new StringWriter();
 		File newFile = new File(chemin);
 		newFile.getParentFile().mkdirs();

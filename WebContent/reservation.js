@@ -7,7 +7,6 @@ $(document).ready(function(){
 		dataType: "json",
 		data: {mode : 'info'},
 		success:function(data,statut){
-			
 			$.each(data,function(index,element){
 				
 				$("#affichage_event").append("<div class='col-md-4 col-sm-6 portfolio-item'>"+

@@ -69,7 +69,8 @@ public class CreationEvent extends HttpServlet {
 		InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
 		prop.load(input);
 		String chemin = prop.getProperty("mon_path_xml");
-		GestionEvent.createEvent(chemin, idLieux, nomEvent, typeEvent, detailEvent, dateConvert);
+		GestionEvent g = new GestionEvent(chemin);
+		g.createEvent( idLieux, nomEvent, typeEvent, detailEvent, dateConvert);
 		response.getWriter().write("ok");
 		
 	}

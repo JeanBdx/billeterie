@@ -47,10 +47,10 @@ public class SupprimerLieu extends HttpServlet {
 		InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
 		prop.load(input);
 		String chemin = prop.getProperty("mon_path_xml");
+		GestionEvent g = new GestionEvent(chemin);
+		Lieux l = g.getLieu( idLieu);
 		
-		Lieux l = GestionEvent.getLieu(chemin, idLieu);
-		
-		if(GestionEvent.deleteLieu(chemin, l) == true){
+		if(g.deleteLieu( l) == true){
 			response.getWriter().write("ok");
 		}
 	}

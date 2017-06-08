@@ -56,24 +56,24 @@ public class InfoReservation extends HttpServlet {
 		InputStream input = this.getServletContext().getResourceAsStream("WEB-INF/chemin.properties");
 		prop.load(input);
 		String chemin = prop.getProperty("mon_path_xml");
-		
+		GestionEvent g = new GestionEvent(chemin);
 		if(request.getParameter("mode").equals("info")){
 			
 			response.setContentType("application/json");
-			String retour = new Gson().toJson(GestionEvent.getEvenements(chemin));
+			String retour = new Gson().toJson(g.getEvenements());
 			response.getWriter().write(retour);
 		}
 		if(request.getParameter("mode").equals("getZone")){
 			String idEvent = request.getParameter("idEvent");
 			String nomCategorie = request.getParameter("nomCategorie");
-			String retour = new Gson().toJson(GestionEvent.NomZones(chemin, idEvent, nomCategorie));
+			String retour = new Gson().toJson(g.NomZones(idEvent, nomCategorie));
 			response.getWriter().write(retour);
 		}
 		if(request.getParameter("mode").equals("getRang")){
 			String idEvent = request.getParameter("idEvent");
 			String nomCategorie = request.getParameter("nomCategorie");
 			String nomZone = request.getParameter("nomZone");
-			String retour = new Gson().toJson(GestionEvent.NomRang(chemin, idEvent, nomCategorie,nomZone));
+			String retour = new Gson().toJson(g.NomRang( idEvent, nomCategorie,nomZone));
 			response.getWriter().write(retour);
 		}
 		if(request.getParameter("mode").equals("getPlace")){
@@ -81,7 +81,7 @@ public class InfoReservation extends HttpServlet {
 			String nomCategorie = request.getParameter("nomCategorie");
 			String nomZone = request.getParameter("nomZone");
 			String nomRang = request.getParameter("nomRang");
-			String retour = new Gson().toJson(GestionEvent.NomPlace(chemin, idEvent, nomCategorie, nomZone, nomRang));
+			String retour = new Gson().toJson(g.NomPlace( idEvent, nomCategorie, nomZone, nomRang));
 			response.getWriter().write(retour);
 		}
 	}

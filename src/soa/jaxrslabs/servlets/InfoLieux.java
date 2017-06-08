@@ -49,9 +49,9 @@ public class InfoLieux extends HttpServlet {
 		prop.load(input);
 		String chemin = prop.getProperty("mon_path_xml");
 		
-	
+		GestionEvent g = new GestionEvent(chemin);
 		response.setContentType("application/json");
-		String retour = new Gson().toJson(GestionEvent.getLieux(chemin));
+		String retour = new Gson().toJson(g.getLieux());
 		response.getWriter().write(retour);
 	}
 
